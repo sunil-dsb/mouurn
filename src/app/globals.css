@@ -8,7 +8,7 @@
 @theme {
   /* Brand palette  */
   --color-oat: #f5f2ec;
-  --color-ink: #1a1816;
+  --color-ink:#1a1816;
   --color-muted: #8a8480;
   --color-soft: #c8c4bc;
 
@@ -23,16 +23,21 @@
   --color-footer-rule: #2a2826;
 
   /*  Typography — families  */
-  --font-sans: var(--font-jost), "Jost", sans-serif;
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-sans: "Jost", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
 
   /*  Type scale, from the reference. Line-heights are included ONLY where the
       reference sets one (multi-line text); single-line labels/logos carry size
       only. Usage: `text-hero`, `text-body`, etc. (pair with font-serif/sans). */
   --text-hero: 52px;          --text-hero--line-height: 1.05; /* hero headline */
+  --text-path-sm: 38px;       --text-path-sm--line-height: 1.05; /* path heading tablet */
   --text-path: 44px;          --text-path--line-height: 1.05; /* path heading */
+  --text-story-sm: 28px;      --text-story-sm--line-height: 1.2; /* story heading mobile */
+  --text-story-md: 32px;      --text-story-md--line-height: 1.2; /* story heading tablet */
   --text-story: 36px;         --text-story--line-height: 1.2; /* story heading */
+  --text-newsletter-sm: 33px; --text-newsletter-sm--line-height: 1.1; /* newsletter heading mobile */
   --text-newsletter: 36px;    --text-newsletter--line-height: 1.1; /* newsletter heading */
+  --text-mission-sm: 26px;    --text-mission-sm--line-height: 1.5; /* mission heading mobile */
   --text-mission: 30px;       --text-mission--line-height: 1.5; /* mission heading */
   --text-prose: 18px;         --text-prose--line-height: 1.9; /* serif body (story-p) */
   --text-prose-sm: 16px;      --text-prose-sm--line-height: 1.9; /* serif body, mobile <900 */
@@ -43,6 +48,7 @@
   --text-logo: 28px; /* logo wordmark — single line */
   --text-logo-sm: 20px; /* footer logo — single line */
   --text-nav: 10px; /* nav links — single line */
+  --text-note: 10px;          --text-note--line-height: 1.8; /* multi-line disclaimer / newsletter note */
   --text-label: 9px; /* eyebrows, buttons, labels — single line */
   --text-micro: 8px; /* micro eyebrow — single line */
 
@@ -66,6 +72,7 @@
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    line-height: normal;
   }
 
   body {
@@ -75,6 +82,7 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-weight: 300;
+    line-height: normal;
   }
 }
 
@@ -103,10 +111,10 @@
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: 300;
+  font-weight: 400 !important;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-soft);
+  color: var(--color-soft); 
 }
 
 /* Primary solid button — ink background, light text */
@@ -131,18 +139,15 @@
 /* Underlined text CTA — e.g. "Read our story →" */
 @utility cta-link {
   display: inline-block;
-  font-family: var(--font-sans);
-  font-size: var(--text-nav);
-  letter-spacing: var(--tracking-cta);
-  text-transform: uppercase;
+  margin-top: 28px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
   color: var(--color-ink);
+  text-transform: uppercase;
   text-decoration: none;
   border-bottom: 0.5px solid var(--color-ink);
   padding-bottom: 3px;
-  transition: opacity 0.15s ease;
-  &:hover {
-    opacity: 0.65;
-  }
+    font-weight: 400 !important;
 }
 
 /* Quiet arrow link — e.g. "Find your way in →" */
@@ -178,6 +183,37 @@
   &:focus {
     border-bottom-color: var(--color-ink);
   }
+}
+
+/* 0.5px hairline borders — use instead of border-[0.5px] + border-color anywhere */
+@utility hairline-b {
+  border-bottom-width: 0.5px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-rule);
+}
+
+@utility hairline-b-strong {
+  border-bottom-width: 0.5px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-strong);
+}
+
+@utility hairline-r {
+  border-right-width: 0.5px;
+  border-right-style: solid;
+  border-right-color: var(--color-rule);
+}
+
+@utility hairline-t-footer {
+  border-top-width: 0.5px;
+  border-top-style: solid;
+  border-top-color: var(--color-footer-rule);
+}
+
+@utility hairline-box-strong {
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: var(--color-strong);
 }
 
 /* Underline input field (dark surfaces — footer). Matches .f-input. */
