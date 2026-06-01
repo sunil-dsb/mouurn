@@ -22,18 +22,44 @@
   --color-footer-link: #9a9693;
   --color-footer-rule: #2a2826;
 
-  /*  Typography  */
+  /*  Typography — families  */
   --font-sans: var(--font-jost), "Jost", sans-serif;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", serif;
 
-  /*  Layout  */
-  --container-site: 1200px; /* the centered column the whole site lives in */
-}
+  /*  Type scale, from the reference. Line-heights are included ONLY where the
+      reference sets one (multi-line text); single-line labels/logos carry size
+      only. Usage: `text-hero`, `text-body`, etc. (pair with font-serif/sans). */
+  --text-hero: 52px;          --text-hero--line-height: 1.05; /* hero headline */
+  --text-path: 44px;          --text-path--line-height: 1.05; /* path heading */
+  --text-story: 36px;         --text-story--line-height: 1.2; /* story heading */
+  --text-newsletter: 36px;    --text-newsletter--line-height: 1.1; /* newsletter heading */
+  --text-mission: 30px;       --text-mission--line-height: 1.5; /* mission heading */
+  --text-prose: 18px;         --text-prose--line-height: 1.9; /* serif body (story-p) */
+  --text-prose-sm: 16px;      --text-prose-sm--line-height: 1.9; /* serif body, mobile <900 */
+  --text-teaser: 18px;        --text-teaser--line-height: 1.2; /* teaser heading */
+  --text-body: 13px;          --text-body--line-height: 2; /* body copy, fields */
+  --text-sub: 12px;           --text-sub--line-height: 1.95; /* sub-copy */
+  --text-small: 11px;         --text-small--line-height: 1.9; /* teaser copy, footer links */
+  --text-logo: 28px; /* logo wordmark — single line */
+  --text-logo-sm: 20px; /* footer logo — single line */
+  --text-nav: 10px; /* nav links — single line */
+  --text-label: 9px; /* eyebrows, buttons, labels — single line */
+  --text-micro: 8px; /* micro eyebrow — single line */
 
-/* 0.5px hairline borders are used throughout the design.
-   Tailwind's default `border` is 1px, so expose a hairline utility. */
-@utility border-hairline {
-  border-width: 0.5px;
+  /*  Letter-spacing scale (em), from the reference. Usage: `tracking-eyebrow`. */
+  --tracking-fine: 0.06em;
+  --tracking-sub: 0.08em;
+  --tracking-nav: 0.12em;
+  --tracking-arrow: 0.14em;
+  --tracking-sm: 0.16em;
+  --tracking-cta: 0.18em;
+  --tracking-label: 0.2em;
+  --tracking-btn: 0.22em;
+  --tracking-eyebrow: 0.24em;
+  --tracking-logo: 0.32em;
+
+  /*  Layout  */
+  --container-site: 1200px; /* exact clone: whole site is a centered 1200px column */
 }
 
 @layer base {
@@ -44,11 +70,27 @@
 
   body {
     max-width: var(--container-site);
-    margin: 0 auto;
+    margin-inline: auto;
     background: #fff;
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-weight: 300;
+  }
+}
+
+/* Centered content column that sits inside full-bleed sections.
+   Caps width at --container-site and applies the reference's
+   horizontal gutter (60px desktop, easing down on smaller screens). */
+@utility shell {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 24px;
+  @media (width >= 640px) {
+    padding-inline: 40px;
+  }
+  @media (width >= 768px) {
+    padding-inline: 60px;
   }
 }
 
@@ -60,9 +102,9 @@
 /* Tiny uppercase label sitting above headings */
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: var(--text-label);
   font-weight: 300;
-  letter-spacing: 0.24em;
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--color-soft);
 }
@@ -71,9 +113,9 @@
 @utility btn-primary {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: var(--text-label);
   font-weight: 300;
-  letter-spacing: 0.22em;
+  letter-spacing: var(--tracking-btn);
   text-transform: uppercase;
   color: #fff;
   background: var(--color-ink);
@@ -90,8 +132,8 @@
 @utility cta-link {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 10px;
-  letter-spacing: 0.18em;
+  font-size: var(--text-nav);
+  letter-spacing: var(--tracking-cta);
   text-transform: uppercase;
   color: var(--color-ink);
   text-decoration: none;
@@ -106,9 +148,9 @@
 /* Quiet arrow link — e.g. "Find your way in →" */
 @utility arrow-link {
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: var(--text-label);
   font-weight: 300;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--tracking-cta);
   text-transform: uppercase;
   color: var(--color-muted);
   text-decoration: none;
@@ -125,7 +167,7 @@
   border: none;
   border-bottom: 0.5px solid var(--color-strong);
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: var(--text-body);
   font-weight: 300;
   color: var(--color-ink);
   padding: 14px 0;
@@ -145,7 +187,7 @@
   border: none;
   border-bottom: 0.5px solid var(--color-footer-rule);
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: var(--text-small);
   font-weight: 300;
   color: var(--color-oat);
   padding: 10px 0;

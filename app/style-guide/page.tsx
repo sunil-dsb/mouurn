@@ -8,76 +8,88 @@ export const metadata: Metadata = {
 /* ----------------------------- data ----------------------------- */
 
 const brand = [
-  { name: "Oat", token: "--color-oat", hex: "#F5F2EC", use: "Warm section backgrounds" },
-  { name: "Ink", token: "--color-ink", hex: "#1A1816", use: "Text, footer, primary button" },
-  { name: "Muted", token: "--color-muted", hex: "#8A8480", use: "Body copy, quiet links" },
-  { name: "Soft", token: "--color-soft", hex: "#C8C4BC", use: "Eyebrows, placeholders" },
+  { name: "Oat", hex: "#F5F2EC", classes: ["bg-oat"], use: "Warm section backgrounds" },
+  { name: "Ink", hex: "#1A1816", classes: ["bg-ink", "text-ink"], use: "Text, footer, primary button" },
+  { name: "Muted", hex: "#8A8480", classes: ["text-muted"], use: "Body copy, quiet links" },
+  { name: "Soft", hex: "#C8C4BC", classes: ["text-soft"], use: "Eyebrows, placeholders" },
 ];
 
 const hairlines = [
-  { name: "Rule", token: "--color-rule", hex: "rgba(26,24,22,.08)", use: "Default 0.5px dividers" },
-  { name: "Strong", token: "--color-strong", hex: "rgba(26,24,22,.15)", use: "Field underlines, nav" },
+  { name: "Rule", hex: "rgba(26,24,22,.08)", classes: ["border-rule"], use: "Default 0.5px dividers" },
+  { name: "Strong", hex: "rgba(26,24,22,.15)", classes: ["border-strong"], use: "Field underlines, nav" },
 ];
 
 const neutrals = [
-  { name: "Hover wash", token: "--color-hover", hex: "#FAFAF8", use: "Card hover background" },
-  { name: "Footer label", token: "--color-footer-label", hex: "#AAA8A4", use: "Footer column titles" },
-  { name: "Footer link", token: "--color-footer-link", hex: "#9A9693", use: "Footer links" },
-  { name: "Footer rule", token: "--color-footer-rule", hex: "#2A2826", use: "Dividers on ink" },
+  { name: "Hover wash", hex: "#FAFAF8", classes: ["bg-hover"], use: "Card hover background" },
+  { name: "Footer label", hex: "#AAA8A4", classes: ["text-footer-label"], use: "Footer column titles" },
+  { name: "Footer link", hex: "#9A9693", classes: ["text-footer-link"], use: "Footer links" },
+  { name: "Footer rule", hex: "#2A2826", classes: ["border-footer-rule"], use: "Dividers on ink" },
 ];
 
+// font: serif | sans · token = the text-* class · track = optional tracking-* class
 const serifScale = [
-  { size: 52, lh: 1.05, track: "0", role: "Hero headline", sample: "When words aren't enough." },
-  { size: 44, lh: 1.05, track: "0", role: "Path heading", sample: "I am grieving." },
-  { size: 36, lh: 1.2, track: "0", role: "Story heading", sample: "No one teaches us how." },
-  { size: 36, lh: 1.1, track: "0", role: "Newsletter heading", sample: "Words for the hardest days." },
-  { size: 30, lh: 1.5, track: "0", role: "Mission heading", sample: "People want to help." },
-  { size: 28, lh: 1.2, track: "0.32em", role: "Logo bar", sample: "mouurn" },
-  { size: 20, lh: 1.2, track: "0.2em", role: "Footer logo", sample: "mouurn" },
-  { size: 18, lh: 1.9, track: "0", role: "Serif body (story)", sample: "Real ways to help, real words to say." },
-  { size: 18, lh: 1.2, track: "0", role: "Teaser heading", sample: "What you actually need." },
+  { token: "text-hero", meta: "52px · 1.05", role: "Hero headline", sample: "When words aren't enough." },
+  { token: "text-path", meta: "44px · 1.05", role: "Path heading", sample: "I am grieving." },
+  { token: "text-story", meta: "36px · 1.2", role: "Story heading", sample: "No one teaches us how." },
+  { token: "text-newsletter", meta: "36px · 1.1", role: "Newsletter heading", sample: "Words for the hardest days." },
+  { token: "text-mission", meta: "30px · 1.5", role: "Mission heading", sample: "People want to help." },
+  { token: "text-logo", track: "tracking-logo", meta: "28px · 0.32em", role: "Logo wordmark", sample: "mouurn" },
+  { token: "text-logo-sm", track: "tracking-label", meta: "20px · 0.2em", role: "Footer logo", sample: "mouurn" },
+  { token: "text-prose", meta: "18px · 1.9", role: "Serif body", sample: "Real ways to help, real words to say." },
+  { token: "text-prose-sm", meta: "16px · 1.9", role: "Serif body — mobile <900", sample: "Real ways to help, real words to say." },
+  { token: "text-teaser", meta: "18px · 1.2", role: "Teaser heading", sample: "What you actually need." },
 ];
 
 const sansScale = [
-  { size: 13, lh: 2, track: "0", role: "Body copy, fields", sample: "A registry for grief, set up in five minutes." },
-  { size: 12, lh: 1.95, track: "0", role: "Sub-copy (mission)", sample: "In service of one act — showing up." },
-  { size: 11, lh: 1.9, track: "0", role: "Teaser copy, footer links", sample: "Beyond flowers and lasagna." },
-  { size: 10, lh: 1.4, track: "0.12em", role: "Nav links", sample: "REGISTRY" },
-  { size: 9, lh: 1.4, track: "0.24em", role: "Eyebrows, buttons, labels", sample: "WHY MOUURN EXISTS" },
-  { size: 8, lh: 1.4, track: "0.22em", role: "Micro eyebrow", sample: "FOR THEM" },
+  { token: "text-body", meta: "13px · 2.0", role: "Body copy, fields", sample: "A registry for grief, set up in five minutes." },
+  { token: "text-sub", meta: "12px · 1.95", role: "Sub-copy", sample: "In service of one act — showing up." },
+  { token: "text-small", meta: "11px · 1.9", role: "Teaser copy, footer links", sample: "Beyond flowers and lasagna." },
+  { token: "text-nav", track: "tracking-nav", meta: "10px · 0.12em", role: "Nav links", sample: "REGISTRY", upper: true },
+  { token: "text-label", track: "tracking-eyebrow", meta: "9px · 0.24em", role: "Eyebrows, buttons, labels", sample: "WHY MOUURN EXISTS", upper: true },
+  { token: "text-micro", track: "tracking-btn", meta: "8px · 0.22em", role: "Micro eyebrow", sample: "FOR THEM", upper: true },
 ];
 
-const tracking = ["0.06em", "0.08em", "0.12em", "0.14em", "0.16em", "0.18em", "0.2em", "0.22em", "0.24em", "0.32em"];
+const tracking = [
+  { token: "tracking-fine", val: "0.06em", role: "Footer copyright" },
+  { token: "tracking-sub", val: "0.08em", role: "Hero sub-line" },
+  { token: "tracking-nav", val: "0.12em", role: "Nav links" },
+  { token: "tracking-arrow", val: "0.14em", role: "Teaser arrow" },
+  { token: "tracking-sm", val: "0.16em", role: "Footer subscribe" },
+  { token: "tracking-cta", val: "0.18em", role: "CTA / arrow links" },
+  { token: "tracking-label", val: "0.2em", role: "Footer labels, footer logo" },
+  { token: "tracking-btn", val: "0.22em", role: "Buttons, micro eyebrow" },
+  { token: "tracking-eyebrow", val: "0.24em", role: "Eyebrows" },
+  { token: "tracking-logo", val: "0.32em", role: "Logo wordmark" },
+];
 
 const spacing = [8, 10, 12, 14, 16, 20, 24, 26, 28, 32, 36, 40, 48, 60, 72, 80];
 
-const lineHeights = [
-  { lh: 1.05, role: "Display headlines" },
-  { lh: 1.1, role: "Newsletter heading" },
-  { lh: 1.2, role: "Section / teaser headings" },
-  { lh: 1.5, role: "Mission heading" },
-  { lh: 1.9, role: "Serif body" },
-  { lh: 1.95, role: "Mission sub-copy" },
-  { lh: 2.0, role: "Sans body (editorial)" },
-];
-
 /* --------------------------- helpers ---------------------------- */
+
+function Code({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="mr-1.5 inline-block bg-oat px-1.5 py-1 font-mono text-nav leading-none text-ink">
+      {children}
+    </span>
+  );
+}
 
 function Section({
   eyebrow,
   title,
+  note,
   children,
 }: {
   eyebrow: string;
   title: string;
+  note?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-hairline border-rule border-b px-6 py-16 sm:px-10 md:px-[60px] md:py-20">
+    <section className="border-b-[0.5px] border-rule px-6 py-16 sm:px-10 md:px-15 md:py-20">
       <div className="eyebrow mb-3">{eyebrow}</div>
-      <h2 className="font-serif text-[30px] font-light leading-tight text-ink">
-        {title}
-      </h2>
+      <h2 className="font-serif text-mission font-light text-ink">{title}</h2>
+      {note && <p className="mt-4 max-w-xl text-body text-muted">{note}</p>}
       <div className="mt-10">{children}</div>
     </section>
   );
@@ -85,37 +97,68 @@ function Section({
 
 function Swatch({
   name,
-  token,
   hex,
+  classes,
   use,
   dark = false,
 }: {
   name: string;
-  token: string;
   hex: string;
+  classes: string[];
   use: string;
   dark?: boolean;
 }) {
   return (
-    <div className="border-hairline border-rule border">
+    <div className="border-[0.5px] border-rule">
       <div className="h-24" style={{ background: hex }} />
-      <div
-        className={`border-hairline border-rule border-t px-4 py-3 ${dark ? "bg-ink" : ""}`}
-      >
-        <div
-          className={`font-serif text-[18px] leading-none ${dark ? "text-oat" : "text-ink"}`}
-        >
+      <div className={`border-t-[0.5px] border-rule px-4 py-3 ${dark ? "bg-ink" : ""}`}>
+        <div className={`font-serif text-teaser leading-none ${dark ? "text-oat" : "text-ink"}`}>
           {name}
         </div>
-        <div className={`mt-1 text-[11px] ${dark ? "text-footer-link" : "text-muted"}`}>
-          {hex}
+        <div className={`mt-1.5 text-small ${dark ? "text-footer-link" : "text-muted"}`}>{hex}</div>
+        <div className="mt-2 flex flex-wrap">
+          {classes.map((c) => (
+            <Code key={c}>{c}</Code>
+          ))}
         </div>
-        <div className={`mt-1 font-mono text-[10px] ${dark ? "text-footer-link" : "text-soft"}`}>
-          {token}
-        </div>
-        <div className={`mt-2 text-[11px] leading-snug ${dark ? "text-footer-link" : "text-muted"}`}>
+        <div className={`mt-2 text-small leading-snug ${dark ? "text-footer-link" : "text-muted"}`}>
           {use}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function TypeRow({
+  font,
+  token,
+  track,
+  meta,
+  role,
+  sample,
+  upper,
+}: {
+  font: "serif" | "sans";
+  token: string;
+  track?: string;
+  meta: string;
+  role: string;
+  sample: string;
+  upper?: boolean;
+}) {
+  const fam = font === "serif" ? "font-serif font-light" : "font-sans font-light";
+  return (
+    <div className="grid grid-cols-1 gap-3 border-b-[0.5px] border-rule pb-8 md:grid-cols-[220px_1fr] md:items-baseline">
+      <div className="text-small text-muted">
+        <div className="mb-2 flex flex-wrap">
+          <Code>{token}</Code>
+          {track && <Code>{track}</Code>}
+        </div>
+        <div className="text-ink">{meta}</div>
+        <div className="mt-0.5 text-soft">{role}</div>
+      </div>
+      <div className={`${fam} ${token} ${track ?? ""} ${upper ? "uppercase" : ""} text-ink`}>
+        {sample}
       </div>
     </div>
   );
@@ -127,110 +170,83 @@ export default function StyleGuide() {
   return (
     <main className="bg-white">
       {/* Masthead */}
-      <header className="border-hairline border-strong border-b px-6 py-12 text-center sm:px-10 md:px-[60px] md:py-16">
-        <div className="font-serif text-[28px] font-light tracking-[0.32em] text-ink">
-          mouurn
-        </div>
+      <header className="border-b-[0.5px] border-strong px-6 py-12 text-center sm:px-10 md:px-15 md:py-16">
+        <div className="font-serif text-logo font-light tracking-logo text-ink">mouurn</div>
         <div className="eyebrow mt-5">Design System</div>
         <h1 className="mx-auto mt-3 max-w-xl font-serif text-[40px] font-light leading-tight text-ink">
           The visual language, <em className="italic">in one place.</em>
         </h1>
-        <p className="mx-auto mt-4 max-w-md text-[12px] leading-relaxed text-muted">
-          Every token harvested from the reference pages — color, type, spacing,
-          and the components we build with. The single source of truth.
+        <p className="mx-auto mt-4 max-w-md text-sub text-muted">
+          Every value below is a token. Use the{" "}
+          <span className="font-mono text-[11px] text-ink">class name</span> shown — all defined
+          in <span className="font-mono text-[11px] text-ink">app/globals.css</span>.
         </p>
       </header>
 
       {/* Color */}
-      <Section eyebrow="01 — Color" title="The palette.">
-        <p className="mb-6 text-[12px] text-muted">Brand</p>
+      <Section eyebrow="01 — Color" title="The palette." note="Reach for the token, never a raw hex. Backgrounds use bg-*, text uses text-*, hairlines use border-*.">
+        <p className="mb-6 text-small text-muted">Brand</p>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {brand.map((c) => (
-            <Swatch key={c.token} {...c} />
+            <Swatch key={c.name} {...c} />
           ))}
         </div>
 
-        <p className="mb-6 mt-12 text-[12px] text-muted">Hairline rules</p>
+        <p className="mb-6 mt-12 text-small text-muted">Hairline rules</p>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {hairlines.map((c) => (
-            <Swatch key={c.token} {...c} />
+            <Swatch key={c.name} {...c} />
           ))}
         </div>
 
-        <p className="mb-6 mt-12 text-[12px] text-muted">UI neutrals (mostly on ink)</p>
+        <p className="mb-6 mt-12 text-small text-muted">UI neutrals (mostly on ink)</p>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {neutrals.map((c) => (
-            <Swatch key={c.token} {...c} dark />
+            <Swatch key={c.name} {...c} dark />
           ))}
         </div>
       </Section>
 
       {/* Typography — serif */}
-      <Section eyebrow="02 — Typography" title="Cormorant Garamond.">
-        <p className="mb-10 text-[12px] text-muted">
-          Headlines. Light (300) and Regular (400), with italics for emphasis.
-        </p>
+      <Section
+        eyebrow="02 — Typography"
+        title="Cormorant Garamond."
+        note="Headlines. Pair font-serif with a text-* token. Each specimen below is rendered through its token."
+      >
         <div className="flex flex-col gap-8">
           {serifScale.map((t) => (
-            <div
-              key={t.size}
-              className="border-hairline border-rule grid grid-cols-1 gap-2 border-b pb-8 md:grid-cols-[140px_1fr] md:items-baseline"
-            >
-              <div className="text-[11px] text-muted">
-                <span className="text-ink">{t.size}px</span> · lh {t.lh}
-                {t.track !== "0" && ` · ${t.track}`}
-                <div className="mt-1 text-soft">{t.role}</div>
-              </div>
-              <div
-                className="font-serif font-light text-ink"
-                style={{ fontSize: t.size, lineHeight: t.lh, letterSpacing: t.track }}
-              >
-                {t.sample}
-              </div>
-            </div>
+            <TypeRow key={t.token + t.role} font="serif" {...t} />
           ))}
         </div>
       </Section>
 
       {/* Typography — sans */}
-      <Section eyebrow="02 — Typography" title="Jost.">
-        <p className="mb-10 text-[12px] text-muted">
-          Body, navigation, and micro-labels. Light (300), Regular (400), Medium (500).
-        </p>
+      <Section
+        eyebrow="02 — Typography"
+        title="Jost."
+        note="Body, navigation, and micro-labels. Pair font-sans with a text-* token (and a tracking-* token for labels)."
+      >
         <div className="flex flex-col gap-8">
           {sansScale.map((t) => (
-            <div
-              key={t.size}
-              className="border-hairline border-rule grid grid-cols-1 gap-2 border-b pb-8 md:grid-cols-[140px_1fr] md:items-baseline"
-            >
-              <div className="text-[11px] text-muted">
-                <span className="text-ink">{t.size}px</span> · lh {t.lh} · {t.track}
-                <div className="mt-1 text-soft">{t.role}</div>
-              </div>
-              <div
-                className="font-sans font-light text-ink"
-                style={{ fontSize: t.size, lineHeight: t.lh, letterSpacing: t.track }}
-              >
-                {t.sample}
-              </div>
-            </div>
+            <TypeRow key={t.token + t.role} font="sans" {...t} />
           ))}
         </div>
       </Section>
 
       {/* Letter-spacing */}
-      <Section eyebrow="03 — Tracking" title="Letter-spacing scale.">
+      <Section eyebrow="03 — Tracking" title="Letter-spacing scale." note="Applied with tracking-* tokens, rendered live below.">
         <div className="flex flex-col gap-5">
           {tracking.map((tr) => (
             <div
-              key={tr}
-              className="border-hairline border-rule grid grid-cols-[80px_1fr] items-center border-b pb-5"
+              key={tr.token}
+              className="grid grid-cols-1 gap-2 border-b-[0.5px] border-rule pb-5 md:grid-cols-[220px_1fr] md:items-center"
             >
-              <div className="text-[11px] text-muted">{tr}</div>
-              <div
-                className="text-[11px] uppercase text-ink"
-                style={{ letterSpacing: tr }}
-              >
+              <div className="text-small text-muted">
+                <Code>{tr.token}</Code>
+                <span className="ml-1 text-ink">{tr.val}</span>
+                <div className="mt-0.5 text-soft">{tr.role}</div>
+              </div>
+              <div className={`text-small uppercase text-ink ${tr.token}`}>
                 Restoring the rituals of comfort
               </div>
             </div>
@@ -238,111 +254,76 @@ export default function StyleGuide() {
         </div>
       </Section>
 
-      {/* Line-height */}
-      <Section eyebrow="04 — Rhythm" title="Line-height.">
-        <div className="grid gap-8 md:grid-cols-[160px_1fr] md:items-start">
-          <div className="flex flex-col gap-2 text-[11px] text-muted">
-            {lineHeights.map((l) => (
-              <div key={l.lh}>
-                <span className="text-ink">{l.lh}</span> — {l.role}
-              </div>
-            ))}
-          </div>
-          <p className="max-w-md text-[13px] text-muted" style={{ lineHeight: 2 }}>
-            Loss leaves a gap where all the ordinary tasks and needs live. A grief
-            registry gives the people around you a real, specific way to show up —
-            with meals, errands, gifts, or the things that actually help.
-          </p>
-        </div>
-      </Section>
-
       {/* Spacing */}
-      <Section eyebrow="05 — Spacing" title="The spacing system.">
-        <p className="mb-10 text-[12px] text-muted">
-          The spacing values used across the reference. Sections use 60px
-          horizontal gutters with 48 / 72 / 80 vertical rhythm.
-        </p>
+      <Section
+        eyebrow="04 — Spacing"
+        title="The spacing system."
+        note="The values used across the reference. Section gutters use the shell utility (60px → 40 → 24); vertical rhythm is 48 / 72 / 80."
+      >
         <div className="flex flex-col gap-4">
           {spacing.map((s) => (
             <div key={s} className="flex items-center gap-5">
-              <div className="w-12 text-right text-[11px] text-muted">{s}px</div>
+              <div className="w-12 text-right text-small text-muted">{s}px</div>
               <div className="h-4 bg-ink" style={{ width: s }} />
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Buttons */}
-      <Section eyebrow="06 — Components" title="Buttons & calls to action.">
+      {/* Buttons & CTAs */}
+      <Section eyebrow="05 — Components" title="Buttons & calls to action." note="Reusable @utility primitives — use the class name directly.">
         <div className="flex flex-col gap-12">
           <div>
-            <div className="eyebrow mb-5">Primary button — .btn-primary</div>
+            <div className="mb-4"><Code>btn-primary</Code></div>
             <button className="btn-primary">Subscribe →</button>
           </div>
           <div>
-            <div className="eyebrow mb-5">Underlined CTA — .cta-link</div>
-            <a href="#" className="cta-link">
-              Read our story →
-            </a>
+            <div className="mb-4"><Code>cta-link</Code></div>
+            <a href="#" className="cta-link">Read our story →</a>
           </div>
           <div>
-            <div className="eyebrow mb-5">Quiet arrow link — .arrow-link</div>
-            <a href="#" className="arrow-link">
-              Find your way in →
-            </a>
+            <div className="mb-4"><Code>arrow-link</Code></div>
+            <a href="#" className="arrow-link">Find your way in →</a>
+          </div>
+          <div>
+            <div className="mb-4"><Code>eyebrow</Code></div>
+            <div className="eyebrow">Why mouurn exists</div>
           </div>
         </div>
       </Section>
 
       {/* Form fields */}
-      <Section eyebrow="06 — Components" title="Form fields.">
+      <Section eyebrow="05 — Components" title="Form fields.">
         <div className="grid gap-12 md:grid-cols-2">
           <div>
-            <div className="eyebrow mb-5">Light surface — .field</div>
+            <div className="mb-4"><Code>field</Code></div>
             <input className="field" placeholder="your@email.com" aria-label="Email" />
-            <input
-              className="field mt-6"
-              placeholder="Your name"
-              aria-label="Name"
-            />
+            <input className="field mt-6" placeholder="Your name" aria-label="Name" />
           </div>
           <div className="bg-ink p-8">
-            <div className="eyebrow mb-5" style={{ color: "var(--color-footer-label)" }}>
-              Dark surface — .field-dark
-            </div>
-            <input
-              className="field-dark"
-              placeholder="your@email.com"
-              aria-label="Email"
-            />
+            <div className="mb-4"><Code>field-dark</Code></div>
+            <input className="field-dark" placeholder="your@email.com" aria-label="Email" />
           </div>
         </div>
       </Section>
 
-      {/* Borders */}
-      <Section eyebrow="07 — Detail" title="0.5px hairlines.">
-        <p className="mb-10 text-[12px] text-muted">
-          The whole design is held together by half-pixel rules — never heavier.
-        </p>
+      {/* Hairlines */}
+      <Section eyebrow="06 — Detail" title="0.5px hairlines." note="The whole design is held together by half-pixel rules — applied as border-{side}-[0.5px] with a rule color.">
         <div className="flex flex-col gap-10">
           <div>
-            <div className="mb-3 text-[11px] text-muted">border-rule (.08)</div>
-            <div className="border-hairline border-rule border-t" />
+            <div className="mb-3 flex flex-wrap"><Code>border-b-[0.5px]</Code><Code>border-rule</Code></div>
+            <div className="border-t-[0.5px] border-rule" />
           </div>
           <div>
-            <div className="mb-3 text-[11px] text-muted">border-strong (.15)</div>
-            <div className="border-hairline border-strong border-t" />
+            <div className="mb-3 flex flex-wrap"><Code>border-b-[0.5px]</Code><Code>border-strong</Code></div>
+            <div className="border-t-[0.5px] border-strong" />
           </div>
         </div>
       </Section>
 
-      <footer className="bg-ink px-6 py-12 text-center sm:px-10 md:px-[60px]">
-        <div className="font-serif text-[20px] font-light tracking-[0.2em] text-oat">
-          mouurn
-        </div>
-        <p className="mt-3 text-[11px] text-footer-link">
-          Design system · Full Stop Productions LLC
-        </p>
+      <footer className="bg-ink px-6 py-12 text-center sm:px-10 md:px-15">
+        <div className="font-serif text-logo-sm font-light tracking-label text-oat">mouurn</div>
+        <p className="mt-3 text-small text-footer-link">Design system · Full Stop Productions LLC</p>
       </footer>
     </main>
   );
