@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   mouurn's global design system
+   Harvested from the HTML reference pages provided.
+   ============================================================ */
+
+@theme {
+  /* Brand palette  */
+  --color-oat: #f5f2ec;
+  --color-ink: #1a1816;
+  --color-muted: #8a8480;
+  --color-soft: #c8c4bc;
+
+  /*  Hairline rules (use as border colors)  */
+  --color-rule: rgba(26, 24, 22, 0.08);
+  --color-strong: rgba(26, 24, 22, 0.15);
+
+  /*  Recurring UI neutrals  */
+  --color-hover: #fafaf8;
+  --color-footer-label: #aaa8a4;
+  --color-footer-link: #9a9693;
+  --color-footer-rule: #2a2826;
+
+  /*  Typography  */
+  --font-sans: var(--font-jost), "Jost", sans-serif;
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", serif;
+
+  /*  Layout  */
+  --container-site: 1200px; /* the centered column the whole site lives in */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* 0.5px hairline borders are used throughout the design.
+   Tailwind's default `border` is 1px, so expose a hairline utility. */
+@utility border-hairline {
+  border-width: 0.5px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    max-width: var(--container-site);
+    margin: 0 auto;
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 300;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Design-system (/style-guide) primitives. Defined as @utility so
+   Tailwind v4 reliably emits them and utilities can override.
+   ============================================================ */
+
+/* Tiny uppercase label sitting above headings */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-soft);
+}
+
+/* Primary solid button — ink background, light text */
+@utility btn-primary {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-ink);
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+/* Underlined text CTA — e.g. "Read our story →" */
+@utility cta-link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--color-ink);
+  padding-bottom: 3px;
+  transition: opacity 0.15s ease;
+  &:hover {
+    opacity: 0.65;
+  }
+}
+
+/* Quiet arrow link — e.g. "Find your way in →" */
+@utility arrow-link {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  &:hover {
+    color: var(--color-ink);
+  }
+}
+
+/* Underline input field (light surfaces) */
+@utility field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid var(--color-strong);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--color-ink);
+  padding: 14px 0;
+  outline: none;
+  &::placeholder {
+    color: var(--color-soft);
+  }
+  &:focus {
+    border-bottom-color: var(--color-ink);
+  }
+}
+
+/* Underline input field (dark surfaces — footer). Matches .f-input. */
+@utility field-dark {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid var(--color-footer-rule);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--color-oat);
+  padding: 10px 0;
+  outline: none;
+  &::placeholder {
+    color: var(--color-footer-link);
+  }
 }
