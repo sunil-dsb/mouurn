@@ -1,6 +1,6 @@
 export default function Mission() {
   return (
-    <section className="mission hairline-b text-center px-6 py-16 sm:px-10 md:px-[60px] md:py-20 bg-white">
+    <section className="mission hairline-b text-center px-8 py-18 md:px-[60px] bg-white">
       <h2 className="mission-h font-serif text-mission-sm md:text-mission font-light text-ink mb-4">
         People want to help.<br />
         <em className="italic">They just don&apos;t know how.</em>

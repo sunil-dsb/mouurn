@@ -40,15 +40,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-ink pt-[60px] pb-10 px-6 sm:px-10 md:px-[60px] select-none text-left">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+    <footer className="bg-ink pt-10 pb-8 px-6 sm:px-10 md:px-[60px] md:pt-[60px] md:pb-[40px] select-none text-left">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-10 md:gap-[48px] pb-10 md:pb-[45px]">
         {/* Column 1: Info and Subscription */}
         <div>
           <div className="f-logo font-serif text-logo-sm tracking-label text-oat mb-3 font-light select-none">
             mouurn
           </div>
           <div
-            className="text-small text-footer-link mb-5 font-light font-serif italic"
+            className="text-small leading-[1.8] text-footer-text mb-5 font-light font-serif italic"
           >
             Restoring the rituals of comfort and community around loss.
           </div>
@@ -56,14 +56,14 @@ export default function Footer() {
             mouurn with me
           </div>
           <div
-            className="text-small text-footer-link mb-3 font-light font-sans"
+            className="text-small leading-[1.8] text-footer-text mb-3 font-light font-sans"
           >
             On love, loss, and what comes after.
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col select-none">
             <input
               type="email"
-              className="field-dark mb-2"
+              className="field-dark leading-normal mb-2"
               placeholder="your@email.com"
               aria-label="Email address"
               value={email}
@@ -74,23 +74,23 @@ export default function Footer() {
               Subscribe →
             </button>
           </form>
-          <p className="f-legal text-label text-footer-link mt-2 font-sans font-light">
+          <p className="f-legal text-label leading-[1.7] text-footer-text mt-1 font-sans font-medium">
             By subscribing you agree to receive emails from mouurn and accept our{" "}
-            <Link href="#" className="text-footer-link underline underline-offset-2 hover:text-footer-label transition-colors">Terms of Use</Link>,{" "}
-            <Link href="#" className="text-footer-link underline underline-offset-2 hover:text-footer-label transition-colors">Privacy Policy</Link> and{" "}
-            <Link href="#" className="text-footer-link underline underline-offset-2 hover:text-footer-label transition-colors">Cookie Policy</Link>. Terms apply.
+            <Link href="#" className="text-footer-legal-link underline underline-offset-2 hover:text-footer-label transition-colors">Terms of Use</Link>,{" "}
+            <Link href="#" className="text-footer-legal-link underline underline-offset-2 hover:text-footer-label transition-colors">Privacy Policy</Link> and{" "}
+            <Link href="#" className="text-footer-legal-link underline underline-offset-2 hover:text-footer-label transition-colors">Cookie Policy</Link>. Terms apply.
           </p>
         </div>
 
         {/* Column 2: Navigate */}
         <div>
-          <div className="text-label tracking-label text-footer-label uppercase mb-3.5 font-sans font-light">
+          <div className="text-label tracking-label text-footer-label uppercase mb-3.5 font-sans font-medium">
             Navigate
           </div>
           {navigateLinks.map((link) => (
             <Link
               key={link.label}
-              className="text-small text-footer-link block mb-2 font-sans font-light no-underline hover:text-oat transition-colors duration-150"
+              className="text-small leading-tight text-footer-link block mb-3 font-sans font-light no-underline hover:text-oat transition-colors duration-150"
               href={link.href}
             >
               {link.label}
@@ -100,13 +100,13 @@ export default function Footer() {
 
         {/* Column 3: This Place & Follow */}
         <div>
-          <div className="text-label tracking-label text-footer-label uppercase mb-3.5 font-sans font-light">
-            This Place
+                    <div className="text-label tracking-label text-footer-label uppercase mb-3.5 font-sans font-medium">
+             This Place
           </div>
           {thisPlaceLinks.map((link) => (
             <Link
               key={link.label}
-              className="text-small text-footer-link block mb-2 font-sans font-light no-underline hover:text-oat transition-colors duration-150"
+              className="text-small leading-tight text-footer-link block mb-2.5 font-sans font-light no-underline hover:text-oat transition-colors duration-150"
               href={link.href}
             >
               {link.label}
@@ -117,7 +117,7 @@ export default function Footer() {
               Follow
             </div>
             <Link
-              className="text-small text-footer-link block mb-2 font-sans font-light no-underline hover:text-oat transition-colors duration-150"
+              className="text-small leading-tight text-footer-link block mb-2 font-sans font-light no-underline hover:text-oat transition-colors duration-150"
               href="https://instagram.com/mouurnwithme"
             >
               @mouurnwithme
@@ -127,15 +127,15 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="hairline-t-footer pt-6 mt-3 flex justify-between items-center flex-wrap gap-3">
-        <span className="text-label text-footer-link tracking-fine font-sans font-light">
+      <div className="hairline-t-footer pt-6 mt-3 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center sm:flex-wrap sm:gap-3">
+        <span className="text-label text-footer-text tracking-fine font-sans font-light">
           © 2026 mouurn · Full Stop Productions LLC
         </span>
-        <div className="flex gap-5">
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
           {bottomLinks.map((link) => (
             <Link
               key={link.label}
-              className="text-label text-footer-link no-underline tracking-fine hover:text-footer-label transition-colors duration-150"
+              className="text-label text-footer-text no-underline tracking-fine hover:text-footer-label transition-colors duration-150"
               href={link.href}
             >
               {link.label}

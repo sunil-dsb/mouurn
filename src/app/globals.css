@@ -20,6 +20,8 @@
   --color-hover: #fafaf8;
   --color-footer-label: #aaa8a4;
   --color-footer-link: #9a9693;
+  --color-footer-text: #555;
+  --color-footer-legal-link: #555;
   --color-footer-rule: #2a2826;
 
   /*  Typography — families  */
@@ -117,12 +119,21 @@
   color: var(--color-soft); 
 }
 
+@utility eyebrow-teaser {
+  font-family: var(--font-sans);
+  font-size: var(--text-micro);
+  font-weight: 400 !important;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-soft); 
+}
+
 /* Primary solid button — ink background, light text */
 @utility btn-primary {
   display: inline-block;
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--tracking-btn);
   text-transform: uppercase;
   color: #fff;
@@ -131,9 +142,6 @@
   padding: 16px 32px;
   cursor: pointer;
   transition: opacity 0.15s ease;
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
 /* Underlined text CTA — e.g. "Read our story →" */
@@ -154,15 +162,23 @@
 @utility arrow-link {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: 300;
   letter-spacing: var(--tracking-cta);
   text-transform: uppercase;
   color: var(--color-muted);
   text-decoration: none;
   transition: color 0.15s ease;
-  &:hover {
-    color: var(--color-ink);
-  }
+  font-weight:400 !important;
+}
+
+@utility arrow-link-teaser{
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  letter-spacing: 1.2;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  font-weight:300 !important;
 }
 
 /* Underline input field (light surfaces) */

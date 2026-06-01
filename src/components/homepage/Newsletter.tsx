@@ -15,7 +15,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="newsletter bg-oat hairline-b p-8 sm:p-12 md:p-20 md:px-[60px] flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+    <section className="newsletter bg-oat hairline-b px-8 py-20 md:px-[60px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
       <div>
         <div className="eyebrow mb-4">mouurn with me</div>
         <h2 className="nl-h font-serif text-newsletter-sm md:text-newsletter font-light text-ink">
@@ -50,7 +50,7 @@ export default function Newsletter() {
         <button type="submit" className="btn-primary self-start">
           Subscribe →
         </button>
-        <p className="nl-note text-note text-soft mt-3 font-sans font-light">
+        <p className="nl-note text-note text-soft mt-3 font-sans font-medium">
           No noise. One letter, once a month. Unsubscribe any time.
         </p>
       </form>

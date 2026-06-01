@@ -58,15 +58,16 @@ export default function Teasers() {
         const inner = (
           <>
             <div>
-              <div className="eyebrow mb-3">{item.eyebrow}</div>
+              <div className="eyebrow-teaser mb-3">{item.eyebrow}</div>
               <h4 className="teaser-h font-serif text-teaser font-light text-ink mb-3">
                 {item.title} <em className="italic">{item.titleEmphasis}</em>
               </h4>
               <p className="teaser-p text-small text-muted font-sans font-light mb-5">
                 {item.description}
               </p>
+              <div className="arrow-link-teaser">{item.cta}</div>
             </div>
-            <div className="arrow-link">{item.cta}</div>
+
           </>
         );
 
