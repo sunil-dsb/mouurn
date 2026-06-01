@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mouurn — Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--oat:#F5F2EC;--ink:#1A1816;--muted:#8A8480;--soft:#C8C4BC;--rule:rgba(26,24,22,0.08);--strong:rgba(26,24,22,0.15)}
+body{font-family:'Jost',sans-serif;background:#fff;color:var(--ink);max-width:1200px;margin:0 auto}
+
+/* NAV */
+.logo-bar{padding:32px 60px 26px;text-align:center;border-bottom:0.5px solid var(--rule)}
+.logo-bar a{font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:0.32em;color:var(--ink);font-weight:300;text-decoration:none}
+.nav{display:flex;align-items:center;padding:16px 60px;border-bottom:0.5px solid var(--strong);position:sticky;top:0;background:#fff;z-index:100}
+.nav-links{display:flex;gap:28px;align-items:center;flex:1;justify-content:center}
+.nl{font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:300;text-decoration:none;transition:color 0.15s;white-space:nowrap}
+.nl:hover,.nl.active{color:var(--ink)}
+.nav-icons{display:flex;gap:16px;align-items:center;flex-shrink:0}
+.search-wrap{position:relative}
+.search-drop{display:none;position:absolute;right:0;top:calc(100% + 16px);width:300px;background:#fff;border:0.5px solid var(--strong);padding:16px 20px;z-index:200;box-shadow:0 8px 32px rgba(26,24,22,0.06)}
+.search-drop.open{display:block}
+.search-drop input{width:100%;background:transparent;border:none;border-bottom:0.5px solid var(--strong);font-family:'Jost',sans-serif;font-size:13px;color:var(--ink);padding:10px 0;outline:none;font-weight:300}
+
+/* PAGE HEADER */
+.page-header{padding:64px 60px 48px;border-bottom:0.5px solid var(--rule)}
+.page-eyebrow{font-size:9px;letter-spacing:0.28em;color:var(--soft);text-transform:uppercase;margin-bottom:16px}
+.page-h{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;line-height:1.05;color:var(--ink);max-width:600px}
+.page-h em{font-style:italic}
+.page-sub{font-size:13px;color:var(--muted);line-height:2.0;font-weight:300;margin-top:16px;max-width:480px}
+.page-disclosure{font-size:10.5px;color:var(--soft);line-height:1.8;font-weight:300;font-style:italic;margin-top:18px;max-width:480px;letter-spacing:0.02em}
+
+/* FILTER BAR */
+.filter-bar{padding:20px 60px;border-bottom:0.5px solid var(--rule);display:flex;gap:8px;align-items:center;overflow-x:auto}
+.filter-pill{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);border:0.5px solid var(--soft);padding:8px 16px;cursor:pointer;background:none;font-family:'Jost',sans-serif;transition:all 0.15s;white-space:nowrap}
+.filter-pill:hover,.filter-pill.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* SECTION HEADERS */
+.section-divider{padding:40px 60px 0;border-top:0.5px solid var(--rule);margin-top:0}
+.section-divider:first-of-type{border-top:none;padding-top:48px}
+.sec-eyebrow{font-size:8px;letter-spacing:0.28em;color:var(--soft);text-transform:uppercase;margin-bottom:10px}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:4px}
+.sec-h em{font-style:italic}
+.sec-desc{font-size:12px;color:var(--muted);font-weight:300;line-height:1.8;max-width:480px;margin-bottom:0;padding-bottom:32px}
+
+/* PRODUCT GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid var(--rule)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+
+.card{padding:36px 32px;border-right:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);cursor:pointer;transition:background 0.15s;display:flex;flex-direction:column;position:relative}
+.card:hover{background:#FAFAF8}
+.card:nth-child(3n){border-right:none}
+.grid-4 .card:nth-child(3n){border-right:0.5px solid var(--rule)}
+.grid-4 .card:nth-child(4n){border-right:none}
+
+.card-tag{font-size:8px;letter-spacing:0.22em;color:var(--soft);text-transform:uppercase;margin-bottom:14px}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.card-name em{font-style:italic}
+.card-brand{font-size:10px;letter-spacing:0.1em;color:var(--soft);text-transform:uppercase;margin-bottom:10px}
+.card-desc{font-size:11px;color:var(--muted);line-height:1.9;font-weight:300;flex:1;margin-bottom:20px}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.card-cta{font-size:8px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;text-decoration:none;border:0.5px solid var(--soft);padding:8px 14px;transition:all 0.15s;display:inline-block}
+.card-cta:hover{border-color:var(--ink);color:var(--ink)}
+.card-badge{font-size:8px;letter-spacing:0.12em;color:var(--soft);text-transform:uppercase}
+
+/* SERVICES — wider 2-col */
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-2 .card:nth-child(2n){border-right:none}
+.grid-2 .card:nth-child(3n){border-right:0.5px solid var(--rule)}
+.grid-2 .card:nth-child(odd):last-child{border-right:none}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--soft);margin-bottom:12px;line-height:1}
+
+/* PULLQUOTE */
+.pullquote{padding:72px 120px;border-bottom:0.5px solid var(--rule);text-align:center}
+.pq-text{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;font-style:italic;color:var(--ink);line-height:1.5;max-width:640px;margin:0 auto}
+.pq-attr{font-size:9px;letter-spacing:0.2em;color:var(--soft);text-transform:uppercase;margin-top:20px}
+
+/* FUND BAND */
+.fund-band{padding:72px 60px;border-bottom:0.5px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;background:var(--ink)}
+.fund-ey{font-size:9px;letter-spacing:0.24em;color:rgba(245,242,236,0.4);text-transform:uppercase;margin-bottom:16px}
+.fund-h{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:#F5F2EC;line-height:1.1}
+.fund-h em{font-style:italic}
+.fund-p{font-size:13px;color:rgba(245,242,236,0.55);line-height:2.0;font-weight:300;margin-top:16px}
+.fund-right{}
+.fund-option{padding:20px 0;border-bottom:0.5px solid rgba(245,242,236,0.1);display:flex;justify-content:space-between;align-items:center}
+.fund-option:first-child{border-top:0.5px solid rgba(245,242,236,0.1)}
+.fund-option-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#F5F2EC}
+.fund-option-desc{font-size:10px;color:rgba(245,242,236,0.4);margin-top:3px}
+.fund-option-btn{font-size:8px;letter-spacing:0.16em;color:rgba(245,242,236,0.5);border:0.5px solid rgba(245,242,236,0.2);padding:8px 14px;cursor:pointer;background:none;font-family:'Jost',sans-serif;text-transform:uppercase;white-space:nowrap;transition:all 0.15s}
+.fund-option-btn:hover{color:#F5F2EC;border-color:rgba(245,242,236,0.6)}
+
+/* FOOTER */
+footer{background:var(--ink);padding:60px 60px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:0.2em;color:#F5F2EC;margin-bottom:12px;font-weight:300}
+.f-col-t{font-size:9px;letter-spacing:0.2em;color:#AAA8A4;text-transform:uppercase;margin-bottom:14px}
+.f-lk{font-size:11px;color:#9A9693;display:block;margin-bottom:8px;font-weight:300;text-decoration:none}
+.f-lk:hover{color:#F5F2EC}
+.f-input{width:100%;background:transparent;border:none;border-bottom:0.5px solid #2A2826;padding:10px 0;font-size:11px;color:#F5F2EC;font-family:'Jost',sans-serif;margin-bottom:8px;outline:none;font-weight:300}
+.f-sub{font-size:9px;letter-spacing:0.16em;color:#AAA8A4;background:none;border:none;cursor:pointer;font-family:'Jost',sans-serif;padding:0;text-transform:uppercase;margin-bottom:10px;display:block}
+.f-legal{font-size:9px;color:#555;line-height:1.7;margin-top:8px}
+.f-legal a{color:#666;text-decoration:underline;text-underline-offset:2px}
+.f-bottom{grid-column:1/-1;border-top:0.5px solid #2A2826;padding-top:24px;margin-top:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.f-copy{font-size:9px;color:#555;letter-spacing:0.06em}
+.f-bottom-links{display:flex;gap:20px}
+.f-bottom-links a{font-size:9px;color:#555;text-decoration:none;letter-spacing:0.06em}
+.f-bottom-links a:hover{color:#AAA8A4}
+</style>
+</head>
+<body>
+
+<div class="logo-bar"><a href="mouurn_homepage.html">mouurn</a></div>
+
+<div class="nav">
+  <div class="nav-links">
+    <a class="nl" href="#">For Them</a>
+    <a class="nl" href="mouurn_registry.html">Registry</a>
+    <a class="nl active" href="mouurn_shop.html">Shop</a>
+    <a class="nl" href="mouurn_plan.html">Plan</a>
+    <a class="nl" href="mouurn_read.html">Read</a>
+    <a class="nl" href="#">About</a>
+  </div>
+  <div class="nav-icons">
+    <div class="search-wrap">
+      <i class="ti ti-search" style="font-size:14px;color:var(--soft);cursor:pointer" onclick="toggleSearch()"></i>
+      <div class="search-drop" id="search-drop">
+        <input type="text" placeholder="search..." />
+      </div>
+    </div>
+    <i class="ti ti-shopping-bag" style="font-size:14px;color:var(--soft);cursor:pointer"></i>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-eyebrow">Shop</div>
+  <div class="page-h">Gifts that <em>actually</em><br>mean something.</div>
+  <p class="page-sub">Curated for every kind of loss. Things that comfort, nourish, hold, and honor. Nothing generic.</p>
+  <p class="page-disclosure">A note on how this works: some of these are mouurn originals, and some are things we love and link to. Where there's an affiliate link, we may earn a small commission — it's how we keep mouurn running and the writing free. We only ever point to things we'd send someone we love.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-pill active" onclick="filterAll(this)">All</button>
+  <button class="filter-pill" onclick="filterCat('services',this)">Services</button>
+  <button class="filter-pill" onclick="filterCat('subscriptions',this)">Subscriptions</button>
+  <button class="filter-pill" onclick="filterCat('comfort',this)">Comfort &amp; Home</button>
+  <button class="filter-pill" onclick="filterCat('food',this)">Food &amp; Drink</button>
+  <button class="filter-pill" onclick="filterCat('wear',this)">Wear</button>
+  <button class="filter-pill" onclick="filterCat('memory',this)">Memory &amp; Meaning</button>
+  <button class="filter-pill" onclick="filterCat('gift',this)">Gift Cards</button>
+</div>
+
+<!-- SERVICES -->
+<div class="section-divider" data-cat="services">
+  <div class="sec-eyebrow">Services</div>
+  <div class="sec-h">When you need someone to <em>take care of it.</em></div>
+  <p class="sec-desc">Thoughtful services for the griever — or for the friend, sister, or coworker who wants to help but doesn't know where to start.</p>
+</div>
+<div class="grid grid-2" data-cat="services">
+  <div class="card">
+    <div class="service-num">01</div>
+    <div class="card-tag">Services</div>
+    <div class="card-name">Death <em>Announcement</em></div>
+    <div class="card-brand">mouurn</div>
+    <p class="card-desc">A beautiful, personalized announcement written and designed for you. We take care of the words when you have none left.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#">Inquire →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="service-num">02</div>
+    <div class="card-tag">Services</div>
+    <div class="card-name">Celebration of Life <em>Announcement</em></div>
+    <div class="card-brand">mouurn</div>
+    <p class="card-desc">Invitations, programs, digital announcements for a celebration of life. Designed with care. Delivered with dignity.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#">Inquire →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="service-num">03</div>
+    <div class="card-tag">Services</div>
+    <div class="card-name">Little Love Notes <em>Studio</em></div>
+    <div class="card-brand">Little Love Notes Studio</div>
+    <p class="card-desc">Custom hand-lettered notes and keepsakes. A deeply personal way to honor someone or support a griever.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://www.littlelovenotesstudio.com/" target="_blank">See it →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="service-num">04</div>
+    <div class="card-tag">Services</div>
+    <div class="card-name">Name a <em>Star</em></div>
+    <div class="card-brand">International Star Registry</div>
+    <p class="card-desc">A star named in their honor. A certificate, a map, a permanent place in the sky. One of the most meaningful gifts after a loss.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+</div>
+
+<!-- SUBSCRIPTIONS -->
+<div class="section-divider" data-cat="subscriptions">
+  <div class="sec-eyebrow">Subscriptions</div>
+  <div class="sec-h">The gift that shows up <em>again and again.</em></div>
+  <p class="sec-desc">Because grief doesn't end after the funeral. A monthly delivery says: I'm still thinking of you.</p>
+</div>
+<div class="grid" data-cat="subscriptions">
+  <div class="card">
+    <div class="card-tag">Subscriptions · Candles</div>
+    <div class="card-name">Flamingo Estate <em>Candle</em></div>
+    <div class="card-brand">Flamingo Estate</div>
+    <p class="card-desc">Organic, garden-grown candles that smell like the earth. Ritual in a jar. One of the most beloved comfort gifts.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/473167" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Subscriptions · Food</div>
+    <div class="card-name">Nancy Silverton <em>Gelato</em></div>
+    <div class="card-brand">Nancy Silverton</div>
+    <p class="card-desc">Legendary gelato from one of America's most beloved chefs. The gift box is indulgent and deeply comforting.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/245838" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Subscriptions · Produce</div>
+    <div class="card-name">Organic Produce <em>Box</em></div>
+    <div class="card-brand">Imperfect Foods / Misfits</div>
+    <p class="card-desc">Fresh, seasonal, organic produce delivered weekly. Nourishment without the task of shopping.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#" target="_blank">Find it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Subscriptions · Bread</div>
+    <div class="card-name">Artisan Bread <em>Delivery</em></div>
+    <div class="card-brand">Goldbelly</div>
+    <p class="card-desc">Freshly baked bread from the country's best bakeries, shipped to their door. The oldest comfort food.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/306540" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Subscriptions · Fruit</div>
+    <div class="card-name">Seasonal Fruit <em>Club</em></div>
+    <div class="card-brand">Frog Hollow Farm</div>
+    <p class="card-desc">Peak-season organic fruit shipped directly from the farm. Light, fresh, and genuinely nourishing.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+</div>
+
+<!-- COMFORT & HOME -->
+<div class="section-divider" data-cat="comfort">
+  <div class="sec-eyebrow">Comfort &amp; Home</div>
+  <div class="sec-h">Things to hold <em>onto.</em></div>
+  <p class="sec-desc">Soft things. Warm things. Objects that make the body feel cared for.</p>
+</div>
+<div class="grid" data-cat="comfort">
+  <div class="card">
+    <div class="card-tag">Comfort · Blanket</div>
+    <div class="card-name">Mantas Ezcaray <em>Blanket</em></div>
+    <div class="card-brand">Mantas Ezcaray</div>
+    <p class="card-desc">Heritage wool blankets from Spain. Heirloom-quality, impossibly soft. The kind of thing you keep forever.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://www.mantasezcaray.com/en/" target="_blank">See it →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Blanket</div>
+    <div class="card-name">Weighted <em>Blanket</em></div>
+    <div class="card-brand">Bearaby</div>
+    <p class="card-desc">A weighted blanket that feels like being held. Genuinely helpful for anxiety and sleeplessness during grief.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/2226300" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Sleep</div>
+    <div class="card-name">Silk <em>Eye Mask</em></div>
+    <div class="card-brand">Slip</div>
+    <p class="card-desc">Pure silk, gentle on skin. For the nights when sleep is elusive and rest is everything.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/1344317" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Warmth</div>
+    <div class="card-name">Heat <em>Pillow</em></div>
+    <div class="card-brand">Aroma Home</div>
+    <p class="card-desc">A lavender-filled heat pillow for aching shoulders and sleepless nights. Warmth when warmth is what's needed.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/1728487" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Tea</div>
+    <div class="card-name">Natalie Creato <em>Tea Set</em></div>
+    <div class="card-brand">Natalie Creato</div>
+    <p class="card-desc">A beautiful ceramic tea set for the ritual of slowing down. Something to hold in both hands.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#" target="_blank">View it →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Plants</div>
+    <div class="card-name">Living <em>Plant</em></div>
+    <div class="card-brand">The Sill</div>
+    <p class="card-desc">A living plant delivered to their door. Something to tend to. Life calling for care, gently.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/621771" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Mug</div>
+    <div class="card-name">Mug, Tea &amp; <em>Tissues</em></div>
+    <div class="card-brand">mouurn curated</div>
+    <p class="card-desc">A beautiful mug, a calming tea blend, and a soft pack of tissues. The simplest care package. The right one.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#">See it →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Bodycare</div>
+    <div class="card-name">Salt &amp; Stone <em>Body Care</em></div>
+    <div class="card-brand">Salt &amp; Stone</div>
+    <p class="card-desc">Clean, mineral-rich body care. Natural deodorant, serums, body wash. Self-care when self-care feels impossible.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/342555" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Comfort · Massage</div>
+    <div class="card-name">Massage <em>Gift Card</em></div>
+    <div class="card-brand">Zeel / Soothe</div>
+    <p class="card-desc">A massage delivered to their home. Grief lives in the body. This is a gift that knows that.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/228774" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOD & DRINK -->
+<div class="section-divider" data-cat="food">
+  <div class="sec-eyebrow">Food &amp; Drink</div>
+  <div class="sec-h">Nourishment as <em>love.</em></div>
+  <p class="sec-desc">The oldest form of showing up. Things that feed the body and tell someone they are not forgotten.</p>
+</div>
+<div class="grid" data-cat="food">
+  <div class="card">
+    <div class="card-tag">Food · Cake</div>
+    <div class="card-name">Doan's Coconut <em>Cake</em></div>
+    <div class="card-brand">Doan's Bakery</div>
+    <p class="card-desc">The legendary coconut cake. Fluffy, towering, unforgettable. The cake people talk about for years.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/2729014" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Food · Chocolate</div>
+    <div class="card-name">Milla <em>Chocolates</em></div>
+    <div class="card-brand">Milla</div>
+    <p class="card-desc">Exquisite, handcrafted chocolates. Small squares of beauty. The kind of gift that says: you deserve something fine.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#" target="_blank">Find it →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Food · Estate Planning</div>
+    <div class="card-name">The Nokbox <em>Kit</em></div>
+    <div class="card-brand">The Nokbox</div>
+    <p class="card-desc">Estate planning and home organization in one thoughtful kit. A practical gift that removes an enormous burden.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://www.thenokbox.com" target="_blank">See it →</a>
+    </div>
+  </div>
+</div>
+
+<!-- WEAR -->
+<div class="section-divider" data-cat="wear">
+  <div class="sec-eyebrow">Wear</div>
+  <div class="sec-h">Something to put <em>on your body.</em></div>
+  <p class="sec-desc">Clothes and accessories that hold you. Soft. Real. Sometimes a little defiant.</p>
+</div>
+<div class="grid" data-cat="wear">
+  <div class="card">
+    <div class="card-tag">Wear · Knitwear</div>
+    <div class="card-name">"Fuck Cancer" <em>Sweater</em></div>
+    <div class="card-brand">Lingua Franca</div>
+    <p class="card-desc">A cotton-cashmere Maxine sweater hand-embroidered with two words everyone thinks but few say. Bold, soft, and deeply human.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://linguafranca.nyc/products/fuck-cancer-maxine-sweater" target="_blank">See it →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Wear · Knitwear</div>
+    <div class="card-name">Love You Boundless <em>Sweater</em></div>
+    <div class="card-brand">Lingua Franca</div>
+    <p class="card-desc">Hand-embroidered cashmere. A wearable declaration. For the person still here, or in memory of the one who isn't.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/458919" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+</div>
+
+<!-- MEMORY & MEANING -->
+<div class="section-divider" data-cat="memory">
+  <div class="sec-eyebrow">Memory &amp; Meaning</div>
+  <div class="sec-h">Things that <em>last.</em></div>
+  <p class="sec-desc">Objects that honor a life. Keepsakes, rituals, and ways to hold what can't be held.</p>
+</div>
+<div class="grid" data-cat="memory">
+  <div class="card">
+    <div class="card-tag">Memory · Stones</div>
+    <div class="card-name">Parting <em>Stones</em></div>
+    <div class="card-brand">Parting Stone</div>
+    <p class="card-desc">Ashes solidified into smooth, individual stones. A gentle, beautiful alternative to traditional cremation remains.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://shopmy.us/shop/product/1085293" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Memory · Nature</div>
+    <div class="card-name">Memorial <em>Tree</em></div>
+    <div class="card-brand">One Tree Planted</div>
+    <p class="card-desc">A tree planted in their name. A living memorial that grows. For every kind of loss — a marker in the world.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="#" target="_blank">See it →</a>
+      <span class="card-badge">affiliate</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag">Memory · Estate</div>
+    <div class="card-name">The Nokbox <em>Estate Kit</em></div>
+    <div class="card-brand">The Nokbox</div>
+    <p class="card-desc">Everything needed to organize a loved one's estate and important documents. A profound act of care for the people left behind.</p>
+    <div class="card-footer">
+      <a class="card-cta" href="https://www.thenokbox.com" target="_blank">See it →</a>
+    </div>
+  </div>
+</div>
+
+<!-- PULLQUOTE -->
+<div class="pullquote">
+  <div class="pq-text">"Nothing can replace what was lost. But something well-chosen says: I see you. I'm here. You are not alone."</div>
+  <div class="pq-attr">— mouurn</div>
+</div>
+
+<!-- GIFT CARDS & FUND -->
+<div class="fund-band" data-cat="gift">
+  <div>
+    <div class="fund-ey">Gift Cards &amp; Funds</div>
+    <div class="fund-h">Give them the freedom<br>to <em>choose what helps.</em></div>
+    <p class="fund-p">Sometimes the most generous thing is a gift card or a fund — for travel, for expenses, for something they haven't thought of yet.</p>
+  </div>
+  <div class="fund-right">
+    <div class="fund-option">
+      <div>
+        <div class="fund-option-name">mouurn Gift Card</div>
+        <div class="fund-option-desc">For anything in the shop or registry</div>
+      </div>
+      <button class="fund-option-btn">Shop →</button>
+    </div>
+    <div class="fund-option">
+      <div>
+        <div class="fund-option-name">Travel Fund</div>
+        <div class="fund-option-desc">Contribute to flights, hotels, or time away</div>
+      </div>
+      <button class="fund-option-btn">Contribute →</button>
+    </div>
+    <div class="fund-option">
+      <div>
+        <div class="fund-option-name">Expense Fund</div>
+        <div class="fund-option-desc">Funeral costs, medical bills, everyday needs</div>
+      </div>
+      <button class="fund-option-btn">Contribute →</button>
+    </div>
+    <div class="fund-option">
+      <div>
+        <div class="fund-option-name">Massage Gift Card</div>
+        <div class="fund-option-desc">Zeel or Soothe in-home massage</div>
+      </div>
+      <button class="fund-option-btn">Shop →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-logo">mouurn</div>
+    <div style="font-size:11px;color:#555;margin-bottom:20px;line-height:1.8;font-weight:300;font-family:'Cormorant Garamond',serif;font-style:italic">Restoring the rituals of comfort and community around loss.</div>
+    <div class="f-col-t">mouurn with me</div>
+    <div style="font-size:11px;color:#555;margin-bottom:12px;line-height:1.8;font-weight:300">On love, loss, and what comes after.</div>
+    <input class="f-input" placeholder="your@email.com" />
+    <button class="f-sub">Subscribe →</button>
+    <p class="f-legal">By subscribing you agree to receive emails from mouurn and accept our <a href="#">Terms of Use</a>, <a href="#">Privacy Policy</a> and <a href="#">Cookie Policy</a>.</p>
+  </div>
+  <div>
+    <div class="f-col-t">Navigate</div>
+    <a class="f-lk" href="#">For Them</a>
+    <a class="f-lk" href="mouurn_registry.html">Registry</a>
+    <a class="f-lk" href="mouurn_shop.html">Shop</a>
+    <a class="f-lk" href="mouurn_plan.html">Plan</a>
+    <a class="f-lk" href="mouurn_read.html">Read</a>
+    <a class="f-lk" href="mouurn_about.html">About mouurn</a>
+  </div>
+  <div>
+    <div class="f-col-t">This Place</div>
+    <a class="f-lk" href="mouurn_about.html">About mouurn</a>
+    <a class="f-lk" href="#">Our team</a>
+    <a class="f-lk" href="#">For grief practitioners</a>
+    <a class="f-lk" href="#">For companies &amp; HR teams</a>
+    <a class="f-lk" href="mouurn_press.html">Press</a>
+    <a class="f-lk" href="#">Get in touch</a>
+    <div style="margin-top:20px">
+      <div class="f-col-t">Follow</div>
+      <a class="f-lk" href="https://instagram.com/mouurnwithme">@mouurnwithme</a>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span class="f-copy">© 2026 mouurn · Full Stop Productions LLC</span>
+    <div class="f-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Shipping</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleSearch() {
+  const drop = document.getElementById('search-drop');
+  drop.classList.toggle('open');
+  if (drop.classList.contains('open')) drop.querySelector('input').focus();
+}
+document.addEventListener('click', function(e) {
+  const wrap = document.querySelector('.search-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('search-drop').classList.remove('open');
+  }
+});
+
+function filterAll(btn) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[data-cat]').forEach(el => el.style.display = '');
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[data-cat]').forEach(el => {
+    el.style.display = (el.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
