@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ScrollToTop from "../components/layout/ScrollToTop";
+import HeaderManager from "../components/layout/HeaderManager";
+import FooterManager from "../components/layout/FooterManager";
 
 export const metadata: Metadata = {
   title: "mouurn — for every kind of loss",
@@ -24,9 +27,16 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
         />
       </head>
-      {/* Chrome (logo/nav/footer) is opt-in per page via <SiteChrome>, so the
-          style guide renders bare. */}
-      <body>{children}</body>
+      {/* Route-aware chrome via the Managers. Routes that bring their own
+          chrome (/, /improved, /style-guide) get null from the Managers and
+          supply their own <main>; main's pages (/new, /registry) wrap their
+          content in <main> themselves. */}
+      <body>
+        <ScrollToTop />
+        <HeaderManager />
+        {children}
+        <FooterManager />
+      </body>
     </html>
   );
 }
