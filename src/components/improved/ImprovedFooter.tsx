@@ -32,7 +32,37 @@ const colLink =
 
 export default function ImprovedFooter() {
   return (
-    <footer className="bg-bark pt-16 pb-10 text-left md:pt-20">
+    <footer className="relative overflow-hidden bg-bark pt-16 pb-10 text-left md:pt-20">
+      {/* Rose — layered 5-petal rings (love + remembrance) */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-34 -left-24 w-[360px] rotate-[8deg] text-oat opacity-[0.25]"
+        viewBox="0 0 300 300"
+        fill="none"
+        stroke="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g transform="translate(150,150)">
+          <ellipse cx="0" cy="-68" rx="28" ry="48" strokeWidth="0.65" />
+          <ellipse cx="0" cy="-68" rx="28" ry="48" strokeWidth="0.65" transform="rotate(72)" />
+          <ellipse cx="0" cy="-68" rx="28" ry="48" strokeWidth="0.65" transform="rotate(144)" />
+          <ellipse cx="0" cy="-68" rx="28" ry="48" strokeWidth="0.65" transform="rotate(216)" />
+          <ellipse cx="0" cy="-68" rx="28" ry="48" strokeWidth="0.65" transform="rotate(288)" />
+          <ellipse cx="0" cy="-44" rx="19" ry="32" strokeWidth="0.55" transform="rotate(36)" />
+          <ellipse cx="0" cy="-44" rx="19" ry="32" strokeWidth="0.55" transform="rotate(108)" />
+          <ellipse cx="0" cy="-44" rx="19" ry="32" strokeWidth="0.55" transform="rotate(180)" />
+          <ellipse cx="0" cy="-44" rx="19" ry="32" strokeWidth="0.55" transform="rotate(252)" />
+          <ellipse cx="0" cy="-44" rx="19" ry="32" strokeWidth="0.55" transform="rotate(324)" />
+          <ellipse cx="0" cy="-26" rx="12" ry="20" strokeWidth="0.5" />
+          <ellipse cx="0" cy="-26" rx="12" ry="20" strokeWidth="0.5" transform="rotate(72)" />
+          <ellipse cx="0" cy="-26" rx="12" ry="20" strokeWidth="0.5" transform="rotate(144)" />
+          <ellipse cx="0" cy="-26" rx="12" ry="20" strokeWidth="0.5" transform="rotate(216)" />
+          <ellipse cx="0" cy="-26" rx="12" ry="20" strokeWidth="0.5" transform="rotate(288)" />
+          <circle cx="0" cy="0" r="14" strokeWidth="0.55" />
+          <circle cx="0" cy="0" r="7" strokeWidth="0.45" />
+          <circle cx="0" cy="0" r="3" fill="currentColor" />
+        </g>
+      </svg>
       <div className="shell-wide">
         <span className="mb-12 block h-px w-10 bg-amber" />
 
