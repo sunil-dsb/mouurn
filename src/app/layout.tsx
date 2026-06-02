@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ScrollToTop from "../components/layout/ScrollToTop";
-import LogoBar from "../components/layout/LogoBar";
-import NavBar from "../components/layout/NavBar";
-import Footer from "../components/layout/Footer";
+import HeaderManager from "../components/layout/HeaderManager";
+import FooterManager from "../components/layout/FooterManager";
 
 export const metadata: Metadata = {
   title: "mouurn — for every kind of loss",
@@ -30,10 +29,9 @@ export default function RootLayout({
       </head>
       <body>
         <ScrollToTop />
-        <LogoBar />
-        <NavBar />
+        <HeaderManager />
         <main>{children}</main>
-        <Footer />
+        <FooterManager />
       </body>
     </html>
   );
