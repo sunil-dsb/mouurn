@@ -15,7 +15,7 @@ const links = {
 
 export default function NewNavBar() {
   return (
-    <div className="nav-container">
+    <div className="nav-container sticky top-0 z-70">
       <nav className="nav-inner">
         <div className="hidden md:flex items-center gap-8">
           {links.left.map((link) => (

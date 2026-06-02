@@ -10,9 +10,9 @@ export default function Story() {
 
         {/* Eyebrow — gold with lines on both sides */}
         <div className="flex items-center justify-center gap-4 mb-7.5 font-sans text-[9px] tracking-[0.28em] uppercase font-normal text-new-gold">
-          <span className="block w-8 h-px flex-shrink-0 bg-new-gold" />
+          <span className="block w-8 h-[0.15] flex-shrink-0 bg-new-gold" />
           Why mouurn exists
-          <span className="block w-8 h-px flex-shrink-0 bg-new-gold" />
+          <span className="block w-8 h-[0.15] flex-shrink-0 bg-new-gold" />
         </div>
 
         <h2 className="font-serif font-light text-[clamp(34px,4vw,56px)] leading-[1.2] text-new-ink mb-9">
