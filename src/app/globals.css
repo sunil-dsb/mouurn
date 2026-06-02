@@ -310,7 +310,7 @@
   font-weight: 300;
   color: var(--color-new-rule-md);
   position: absolute;
-  top: -14px;
+  top: 0px;
   right: 38px;
   pointer-events: none;
   user-select: none;
