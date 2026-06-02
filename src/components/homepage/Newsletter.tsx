@@ -23,7 +23,7 @@ export default function Newsletter() {
           hardest <em className="italic">days.</em>
         </h2>
         <p className="nl-p text-body text-muted font-light mt-3.5">
-          A letter on grief, ritual, and how to show up — for yourself, or
+          A letter on grief, ritual, and how to show up for yourself, or
           someone you love. Written for the ones in the thick of it, and the
           ones standing beside them.
         </p>

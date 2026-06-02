@@ -15,7 +15,7 @@ const pathItems: PathItem[] = [
     eyebrow: "For someone you love",
     title: "I want to help",
     titleEmphasis: "someone grieving.",
-    description: "I want to show up — with the right gift, the right words, or by building a registry.",
+    description: "I want to show up with the right gift, the right words, or by building a registry.",
     cta: "Show me how →",
     href: "/shop",
     borderClass: "",

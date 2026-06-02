@@ -17,7 +17,7 @@ const items: TeaserItem[] = [
     titleEmphasis: "actually need.",
     description: "A registry for grief. Set up in five minutes. Share one link.",
     cta: "Create a registry →",
-    href: "/registry",
+    href: "#",
   },
   {
     eyebrow: "Shop",
@@ -25,7 +25,7 @@ const items: TeaserItem[] = [
     titleEmphasis: "actually help.",
     description: "Beyond flowers and lasagna. Curated for every kind of loss.",
     cta: "Shop gifts →",
-    href: "/shop",
+    href: "#",
   },
   {
     eyebrow: "Plan",
@@ -33,7 +33,7 @@ const items: TeaserItem[] = [
     titleEmphasis: "out alone.",
     description: "A few gentle questions. A complete, personalized plan.",
     cta: "Begin →",
-    href: "/plan",
+    href: "#",
   },
   {
     eyebrow: "Read",
@@ -41,7 +41,7 @@ const items: TeaserItem[] = [
     titleEmphasis: "and what comes after.",
     description: "Essays, history, ritual. Grief taken seriously.",
     cta: "Read the journal →",
-    href: "/read",
+    href: "#",
   },
 ];
 

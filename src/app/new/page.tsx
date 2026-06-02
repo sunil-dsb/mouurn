@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function NewHomepage() {
   return (
-    <>
+    <main>
       <Hero />
       {/* <Ticker /> */}
       <Story />
@@ -23,6 +23,6 @@ export default function NewHomepage() {
       <Mission />
       <Pillars />
       <Newsletter />
-    </>
+    </main>
   );
 }

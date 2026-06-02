@@ -20,7 +20,7 @@ export const metadata = {
 
 export default function RegistryPage() {
   return (
-    <>
+    <main>
       <ComingSoonBar />
       <RegistryHero />
       <Fork />
@@ -34,6 +34,6 @@ export default function RegistryPage() {
       <ItemsGrid />
       <Pullquote />
       <CtaBand />
-    </>
+    </main>
   );
 }

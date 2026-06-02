@@ -7,6 +7,15 @@ import NewFooter from "./NewFooter";
 export default function FooterManager() {
   const pathname = usePathname();
 
+  // These routes supply their own footer (SiteChrome / ImprovedChrome / bare).
+  if (
+    pathname === "/" ||
+    pathname === "/improved" ||
+    pathname === "/style-guide"
+  ) {
+    return null;
+  }
+
   if (pathname === "/new") {
     return <NewFooter />;
   }

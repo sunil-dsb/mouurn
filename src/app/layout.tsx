@@ -27,10 +27,14 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
         />
       </head>
+      {/* Route-aware chrome via the Managers. Routes that bring their own
+          chrome (/, /improved, /style-guide) get null from the Managers and
+          supply their own <main>; main's pages (/new, /registry) wrap their
+          content in <main> themselves. */}
       <body>
         <ScrollToTop />
         <HeaderManager />
-        <main>{children}</main>
+        {children}
         <FooterManager />
       </body>
     </html>
