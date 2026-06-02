@@ -11,13 +11,13 @@ export default function Story() {
         </h2>
         <p className="story-p font-serif text-prose-sm md:text-prose font-light text-ink mb-5 text-left">
           So we send flowers. We bake a lasagna. We say &quot;let me know if you need
-          anything.&quot; We mean it — and then we go quiet, because we don&apos;t know
+          anything.&quot; We mean it and then we go quiet, because we don&apos;t know
           what else to do. The people we love are left alone inside the hardest
           thing that&apos;s ever happened to them.
         </p>
         <p className="story-p font-serif text-prose-sm md:text-prose font-light text-ink mb-5 text-left">
           mouurn exists to change that. Real ways to help, real words to say,
-          and a place to hold it all — for the grieving, and for everyone who
+          and a place to hold it all for the grieving, and for everyone who
           loves them.
         </p>
         <Link className="cta-link text-ink border-ink" href="/about">

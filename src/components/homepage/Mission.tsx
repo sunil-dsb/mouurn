@@ -8,7 +8,7 @@ export default function Mission() {
       <p className="mission-sub text-sub text-muted font-light max-w-[580px] mx-auto">
         mouurn exists to bridge the divide between the person in grief and the
         world that loves them but doesn&apos;t know how to help. Everything we write,
-        build, and make is in service of one act — showing up.
+        build, and make is in service of one act showing up.
       </p>
     </section>
   );

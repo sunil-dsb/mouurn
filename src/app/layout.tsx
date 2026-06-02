@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ScrollToTop from "../components/layout/ScrollToTop";
-import LogoBar from "../components/layout/LogoBar";
-import NavBar from "../components/layout/NavBar";
-import Footer from "../components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "mouurn — for every kind of loss",
@@ -28,13 +24,9 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
         />
       </head>
-      <body>
-        <ScrollToTop />
-        <LogoBar />
-        <NavBar />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      {/* Chrome (logo/nav/footer) is opt-in per page via <SiteChrome>, so the
+          style guide renders bare. */}
+      <body>{children}</body>
     </html>
   );
 }

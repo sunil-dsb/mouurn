@@ -24,6 +24,16 @@
   --color-footer-legal-link: #555;
   --color-footer-rule: #2a2826;
 
+  /*  Elevated palette (v2) — warm depth + one earthy accent.
+      Extends the brand without replacing the faithful tokens above. */
+  --color-paper: #fcfbf8; /* crisp warm surface */
+  --color-sand: #ede7db; /* deeper warm background for layering */
+  --color-clay: #ded7c9; /* quiet filled blocks / cards */
+  --color-bark: #2a241d; /* warm near-black for dark sections / footer */
+  --color-amber: #c18a45; /* accent — marigold / candlelight, used sparingly */
+  --color-amber-deep: #8f5e22; /* accent text that passes contrast on light */
+  --color-quiet: #6e6960; /* accessible secondary text — ~5:1 on light, passes AA */
+
   /*  Typography — families  */
   --font-sans: "Jost", sans-serif;
   --font-serif: "Cormorant Garamond", serif;
@@ -54,6 +64,10 @@
   --text-label: 9px; /* eyebrows, buttons, labels — single line */
   --text-micro: 8px; /* micro eyebrow — single line */
 
+  /*  Elevated (v2) editorial sizes */
+  --text-display: 72px;       --text-display--line-height: 1.02; /* editorial display */
+  --text-lead: 22px;          --text-lead--line-height: 1.6; /* serif lead / intro */
+
   /*  Letter-spacing scale (em), from the reference. Usage: `tracking-eyebrow`. */
   --tracking-fine: 0.06em;
   --tracking-sub: 0.08em;
@@ -68,6 +82,78 @@
 
   /*  Layout  */
   --container-site: 1200px; /* exact clone: whole site is a centered 1200px column */
+
+  /*  Motion — gentle, purposeful easing (pair with duration-* utilities) */
+  --ease-gentle: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /*  Soft warm elevation — bark-tinted, low + wide so cards read as lifted
+      paper, not boxed by a hard line. Usage: `shadow-soft`. */
+  --shadow-soft: 0 18px 44px -24px rgba(42, 36, 29, 0.28);
+}
+
+/* ============================================================
+   ELEVATED TYPE SCALE — /improved only.
+   Tailwind v4 emits `text-*` utilities as `font-size: var(--text-*)`, so
+   re-declaring the variables on this wrapper re-sizes every utility *inside
+   the subtree* without new class names. The faithful clone at "/" and the
+   style-guide inherit the original :root values untouched.
+
+   Principles: one ~1.25 ratio, fluid clamp() so type breathes between mobile
+   and desktop (no breakpoint snapping), tighter serif leading (premium book,
+   not blog), and an 11px floor on every label (legibility + WCAG).
+   ============================================================ */
+.improved-type {
+  /* Display / headings — fluid */
+  --text-display: clamp(3.25rem, 1.8rem + 5vw, 5.25rem);   /* 52 → 84 */
+  --text-display--line-height: 1.04;
+  --text-hero: clamp(2.75rem, 1.55rem + 4vw, 4.5rem);      /* 44 → 72 */
+  --text-hero--line-height: 1.06;
+  --text-path: clamp(2.25rem, 1.55rem + 2.4vw, 3rem);      /* 36 → 48 */
+  --text-path--line-height: 1.08;
+  --text-path-sm: clamp(2rem, 1.5rem + 1.8vw, 2.5rem);     /* 32 → 40 */
+  --text-path-sm--line-height: 1.1;
+  --text-newsletter: clamp(2rem, 1.4rem + 2vw, 2.75rem);   /* 32 → 44 */
+  --text-newsletter--line-height: 1.08;
+  --text-story: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem);     /* 30 → 40 */
+  --text-story--line-height: 1.12;
+  --text-mission: clamp(1.6rem, 1.25rem + 1.1vw, 2rem);    /* 26 → 32 */
+  --text-mission--line-height: 1.35;
+  --text-teaser: 1.3125rem;                                /* 21 */
+  --text-teaser--line-height: 1.25;
+
+  /* Reading sizes — tighter, more generous leading floor */
+  --text-lead: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);    /* 19 → 23 */
+  --text-lead--line-height: 1.6;
+  --text-prose: 1.1875rem;                                 /* 19 (was 18) */
+  --text-prose--line-height: 1.7;                          /* was 1.9 */
+  --text-prose-sm: 1.0625rem;                              /* 17 */
+  --text-prose-sm--line-height: 1.7;
+  --text-body: 0.9375rem;                                  /* 15 (was 13) */
+  --text-body--line-height: 1.7;                           /* was 2 */
+  --text-sub: 0.875rem;                                    /* 14 (was 12) */
+  --text-sub--line-height: 1.7;
+  --text-small: 0.8125rem;                                 /* 13 (was 11) */
+  --text-small--line-height: 1.75;
+
+  /* Labels — floored at 11px */
+  --text-note: 0.75rem;                                    /* 12 (was 10) */
+  --text-note--line-height: 1.7;
+  --text-nav: 0.6875rem;                                   /* 11 (was 10) */
+  --text-label: 0.6875rem;                                 /* 11 (was 9) */
+  --text-micro: 0.6875rem;                                 /* 11 (was 8) */
+
+  /* Wordmark — a touch more presence */
+  --text-logo: 1.875rem;                                   /* 30 (was 28) */
+  --text-logo-sm: 1.375rem;                                /* 22 (was 20) */
+}
+
+/* Section vertical rhythm — fluid, replaces ad-hoc py-24/py-32 so every
+   section breathes on one consistent scale. Used by /improved sections. */
+@utility section-y {
+  padding-block: clamp(4.5rem, 3rem + 6vw, 8.5rem);        /* 72 → 136 */
+}
+@utility section-y-sm {
+  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem);        /* 56 → 96 */
 }
 
 @layer base {
@@ -78,14 +164,41 @@
   }
 
   body {
-    max-width: var(--container-site);
-    margin-inline: auto;
     background: #fff;
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-weight: 300;
     line-height: normal;
   }
+}
+
+/* Respect users who prefer reduced motion (accessibility).
+   Top-level (not in @layer base) so Tailwind v4 always emits it. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Gentle entrance — fade + rise. Disabled automatically for reduced-motion
+   users by the guard above (duration collapses, `both` lands on the end state). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@utility rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Centered content column that sits inside full-bleed sections.
@@ -101,6 +214,21 @@
   }
   @media (width >= 768px) {
     padding-inline: 60px;
+  }
+}
+
+/* Wider content column for the elevated /improved pages — sits inside
+   full-bleed sections with a more generous cap and gutter. */
+@utility shell-wide {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  @media (width >= 640px) {
+    padding-inline: 40px;
+  }
+  @media (width >= 768px) {
+    padding-inline: 72px;
   }
 }
 
@@ -142,6 +270,20 @@
   padding: 16px 32px;
   cursor: pointer;
   transition: opacity 0.15s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.6;
+  }
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+  }
 }
 
 /* Underlined text CTA — e.g. "Read our story →" */
@@ -155,7 +297,14 @@
   text-decoration: none;
   border-bottom: 0.5px solid var(--color-ink);
   padding-bottom: 3px;
-    font-weight: 400 !important;
+  transition: opacity 0.15s ease;
+  &:hover {
+    opacity: 0.65;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+  }
 }
 
 /* Quiet arrow link — e.g. "Find your way in →" */
@@ -164,21 +313,28 @@
   font-size: var(--text-label);
   letter-spacing: var(--tracking-cta);
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-quiet);
   text-decoration: none;
   transition: color 0.15s ease;
-  font-weight:400 !important;
+  &:hover {
+    color: var(--color-ink);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+  }
 }
 
-@utility arrow-link-teaser{
+/* Teaser arrow variant (from homepage build) */
+@utility arrow-link-teaser {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  letter-spacing: 1.2;
+  letter-spacing: var(--tracking-arrow);
   text-transform: uppercase;
   color: var(--color-muted);
   text-decoration: none;
   transition: color 0.15s ease;
-  font-weight:300 !important;
+  font-weight: 300;
 }
 
 /* Underline input field (light surfaces) */
@@ -196,8 +352,11 @@
   &::placeholder {
     color: var(--color-soft);
   }
+  /* Underline fields show focus by turning the rule marigold — no boxy ring. */
   &:focus {
-    border-bottom-color: var(--color-ink);
+    border-bottom-color: var(--color-amber);
+    border-bottom-width: 1px;
+    outline: none;
   }
 }
 
@@ -247,4 +406,90 @@
   &::placeholder {
     color: var(--color-footer-link);
   }
+  &:focus {
+    border-bottom-color: var(--color-amber);
+    border-bottom-width: 1px;
+    outline: none;
+  }
+}
+
+/* Nav link — top navigation items */
+@utility nav-link {
+  font-family: var(--font-sans);
+  font-size: var(--text-nav);
+  font-weight: 300;
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  color: var(--color-quiet);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+  &:hover {
+    color: var(--color-ink);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 4px;
+  }
+}
+
+/* Understated label badge — e.g. "Coming soon" */
+@utility badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-micro);
+  font-weight: 400;
+  letter-spacing: var(--tracking-btn);
+  text-transform: uppercase;
+  color: var(--color-quiet);
+  border: 0.5px solid var(--color-strong);
+  padding: 5px 10px;
+}
+
+/* Content card — teasers, registry items */
+@utility card {
+  background: var(--color-paper);
+  border: 0.5px solid var(--color-rule);
+  padding: 28px;
+  transition: background 0.15s ease;
+  &:hover {
+    background: var(--color-hover);
+  }
+}
+
+/* Icon button — 44x44 minimum hit area for touch (Fitts's Law) */
+@utility icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--color-quiet);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  &:hover {
+    color: var(--color-ink);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 2px;
+  }
+}
+
+/* Readable line-length for prose (~64 characters) */
+@utility measure {
+  max-width: 64ch;
+}
+
+/* Subtle paper grain — fixed overlay using inline SVG noise (owned, no asset file).
+   Use once: <div class="grain" aria-hidden /> */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxODAnIGhlaWdodD0nMTgwJz48ZmlsdGVyIGlkPSdnJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC42NScgbnVtT2N0YXZlcz0nMycgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNnKScvPjwvc3ZnPg==");
 }
