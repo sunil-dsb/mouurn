@@ -8,7 +8,7 @@
 @theme {
   /* Brand palette  */
   --color-oat: #f5f2ec;
-  --color-ink:#1a1816;
+  --color-ink: #1a1816;
   --color-muted: #8a8480;
   --color-soft: #c8c4bc;
 
@@ -31,28 +31,73 @@
   /*  Type scale, from the reference. Line-heights are included ONLY where the
       reference sets one (multi-line text); single-line labels/logos carry size
       only. Usage: `text-hero`, `text-body`, etc. (pair with font-serif/sans). */
-  --text-hero: 52px;          --text-hero--line-height: 1.05; /* hero headline */
-  --text-path-sm: 38px;       --text-path-sm--line-height: 1.05; /* path heading tablet */
-  --text-path: 44px;          --text-path--line-height: 1.05; /* path heading */
-  --text-story-sm: 28px;      --text-story-sm--line-height: 1.2; /* story heading mobile */
-  --text-story-md: 32px;      --text-story-md--line-height: 1.2; /* story heading tablet */
-  --text-story: 36px;         --text-story--line-height: 1.2; /* story heading */
-  --text-newsletter-sm: 33px; --text-newsletter-sm--line-height: 1.1; /* newsletter heading mobile */
-  --text-newsletter: 36px;    --text-newsletter--line-height: 1.1; /* newsletter heading */
-  --text-mission-sm: 26px;    --text-mission-sm--line-height: 1.5; /* mission heading mobile */
-  --text-mission: 30px;       --text-mission--line-height: 1.5; /* mission heading */
-  --text-prose: 18px;         --text-prose--line-height: 1.9; /* serif body (story-p) */
-  --text-prose-sm: 16px;      --text-prose-sm--line-height: 1.9; /* serif body, mobile <900 */
-  --text-teaser: 18px;        --text-teaser--line-height: 1.2; /* teaser heading */
-  --text-body: 13px;          --text-body--line-height: 2; /* body copy, fields */
-  --text-sub: 12px;           --text-sub--line-height: 1.95; /* sub-copy */
-  --text-small: 11px;         --text-small--line-height: 1.9; /* teaser copy, footer links */
-  --text-logo: 28px; /* logo wordmark — single line */
-  --text-logo-sm: 20px; /* footer logo — single line */
-  --text-nav: 10px; /* nav links — single line */
-  --text-note: 10px;          --text-note--line-height: 1.8; /* multi-line disclaimer / newsletter note */
-  --text-label: 9px; /* eyebrows, buttons, labels — single line */
-  --text-micro: 8px; /* micro eyebrow — single line */
+  --text-hero: 52px;
+  --text-hero--line-height: 1.05;
+  /* hero headline */
+  --text-path-sm: 38px;
+  --text-path-sm--line-height: 1.05;
+  /* path heading tablet */
+  --text-path: 44px;
+  --text-path--line-height: 1.05;
+  /* path heading */
+  --text-story-sm: 28px;
+  --text-story-sm--line-height: 1.2;
+  /* story heading mobile */
+  --text-story-md: 32px;
+  --text-story-md--line-height: 1.2;
+  /* story heading tablet */
+  --text-story: 36px;
+  --text-story--line-height: 1.2;
+  /* story heading */
+  --text-newsletter-sm: 33px;
+  --text-newsletter-sm--line-height: 1.1;
+  /* newsletter heading mobile */
+  --text-newsletter: 36px;
+  --text-newsletter--line-height: 1.1;
+  /* newsletter heading */
+  --text-mission-sm: 26px;
+  --text-mission-sm--line-height: 1.5;
+  /* mission heading mobile */
+  --text-mission: 30px;
+  --text-mission--line-height: 1.5;
+  /* mission heading */
+  --text-prose: 18px;
+  --text-prose--line-height: 1.9;
+  /* serif body (story-p) */
+  --text-prose-sm: 16px;
+  --text-prose-sm--line-height: 1.9;
+  /* serif body, mobile <900 */
+  --text-teaser: 18px;
+  --text-teaser--line-height: 1.2;
+  /* teaser heading */
+  --text-body: 13px;
+  --text-body--line-height: 2;
+  /* body copy, fields */
+  --text-sub: 12px;
+  --text-sub--line-height: 1.95;
+  /* sub-copy */
+  --text-small: 11px;
+  --text-small--line-height: 1.9;
+  /* teaser copy, footer links */
+  --text-logo: 28px;
+  /* logo wordmark — single line */
+  --text-logo-sm: 20px;
+  /* footer logo — single line */
+  --text-nav: 10px;
+  /* nav links — single line */
+  --text-note: 10px;
+  --text-note--line-height: 1.8;
+  /* multi-line disclaimer / newsletter note */
+  --text-label: 9px;
+  /* eyebrows, buttons, labels — single line */
+  --text-micro: 8px;
+  /* micro eyebrow — single line */
+
+  /* Newly added sizes for registry/homepage components refactoring */
+  --text-item-name: 22px;
+  --text-display-sm: 40px;
+  --text-quote: 14px;
+  --text-path-md: 42px;
 
   /*  Letter-spacing scale (em), from the reference. Usage: `tracking-eyebrow`. */
   --tracking-fine: 0.06em;
@@ -67,7 +112,8 @@
   --tracking-logo: 0.32em;
 
   /*  Layout  */
-  --container-site: 1200px; /* exact clone: whole site is a centered 1200px column */
+  --container-site: 1200px;
+  /* exact clone: whole site is a centered 1200px column */
 }
 
 @layer base {
@@ -96,10 +142,12 @@
   max-width: var(--container-site);
   margin-inline: auto;
   padding-inline: 24px;
-  @media (width >= 640px) {
+
+  @media (width >=640px) {
     padding-inline: 40px;
   }
-  @media (width >= 768px) {
+
+  @media (width >=768px) {
     padding-inline: 60px;
   }
 }
@@ -116,7 +164,7 @@
   font-weight: 400 !important;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-soft); 
+  color: var(--color-soft);
 }
 
 @utility eyebrow-teaser {
@@ -125,7 +173,7 @@
   font-weight: 400 !important;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-soft); 
+  color: var(--color-soft);
 }
 
 /* Primary solid button — ink background, light text */
@@ -155,7 +203,7 @@
   text-decoration: none;
   border-bottom: 0.5px solid var(--color-ink);
   padding-bottom: 3px;
-    font-weight: 400 !important;
+  font-weight: 400 !important;
 }
 
 /* Quiet arrow link — e.g. "Find your way in →" */
@@ -167,10 +215,10 @@
   color: var(--color-muted);
   text-decoration: none;
   transition: color 0.15s ease;
-  font-weight:400 !important;
+  font-weight: 400 !important;
 }
 
-@utility arrow-link-teaser{
+@utility arrow-link-teaser {
   font-family: var(--font-sans);
   font-size: var(--text-label);
   letter-spacing: 1.2;
@@ -178,7 +226,7 @@
   color: var(--color-muted);
   text-decoration: none;
   transition: color 0.15s ease;
-  font-weight:300 !important;
+  font-weight: 300 !important;
 }
 
 /* Underline input field (light surfaces) */
@@ -193,9 +241,11 @@
   color: var(--color-ink);
   padding: 14px 0;
   outline: none;
+
   &::placeholder {
     color: var(--color-soft);
   }
+
   &:focus {
     border-bottom-color: var(--color-ink);
   }
@@ -244,6 +294,7 @@
   color: var(--color-oat);
   padding: 10px 0;
   outline: none;
+
   &::placeholder {
     color: var(--color-footer-link);
   }
