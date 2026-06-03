@@ -40,9 +40,7 @@ export default function NewImproved() {
       <SoftFade>
         <Held />
       </SoftFade>
-      <SoftFade>
-        <Newsletter />
-      </SoftFade>
+      <Newsletter />
     </NewImprovedChrome>
   );
 }

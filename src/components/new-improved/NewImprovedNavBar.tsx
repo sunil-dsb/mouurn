@@ -19,7 +19,7 @@ const focusRing =
   "focus-visible:[outline:2px_solid_var(--color-new-gold)] focus-visible:outline-offset-4";
 
 // Center-out gold underline that grows to both edges on hover.
-const link = `relative font-sans text-[11px] uppercase tracking-[0.14em] text-new-ink/75 transition-colors duration-150 hover:text-new-ink after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-center after:scale-x-0 after:bg-new-gold after:transition-transform after:duration-200 after:content-[''] hover:after:scale-x-100 ${focusRing}`;
+const link = `relative font-sans text-[11px] uppercase tracking-[0.14em] text-black font-normal transition-colors duration-150 hover:text-black/80 after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-center after:scale-x-0 after:bg-new-gold after:transition-transform after:duration-200 after:content-[''] hover:after:scale-x-100 ${focusRing}`;
 
 export default function NewImprovedNavBar() {
   const [open, setOpen] = useState(false);
@@ -67,7 +67,7 @@ export default function NewImprovedNavBar() {
         {/* Center — wordmark */}
         <Link
           href="/new-improved"
-          className="font-serif text-[26px] font-normal tracking-logo text-new-ink"
+          className="font-serif text-[26px] font-normal tracking-logo text-black"
         >
           mouurn
         </Link>

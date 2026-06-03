@@ -1,3 +1,6 @@
+import Botanical from "./Botanical";
+import Flower from "./Flower";
+
 const groups = [
   {
     title: "The griever",
@@ -51,12 +54,33 @@ const groups = [
 
 export default function Held() {
   return (
-    <section className="border-b-[0.5px] border-new-rule bg-new-oat py-20 md:py-28">
-      <div className="mx-auto max-w-[1180px] px-6 md:px-12">
+    <section className="relative overflow-hidden border-b-[0.5px] border-new-rule bg-new-oat py-20 md:py-28">
+      {/* Tactile paper grain texture */}
+      <div className="grain" aria-hidden="true" />
+
+      {/* Gentle leaf sprigs in the empty margins (desktop only) */}
+      <Botanical className="pointer-events-none absolute -bottom-16 -right-12 w-[180px] rotate-[15deg] text-new-ink opacity-[0.10] hidden lg:block" />
+      <Botanical className="pointer-events-none absolute -top-16 -left-12 w-[180px] -rotate-[15deg] text-new-ink opacity-[0.10] hidden lg:block" />
+
+      {/* Aligned container width with Paths.tsx */}
+      <div className="relative z-10 mx-auto max-w-[1320px] px-6 md:px-12">
+
+        {/* Cohesive header kicker styling */}
         <div className="mx-auto mb-14 max-w-[640px] text-center md:mb-16">
-          <span className="mx-auto mb-6 block h-px w-10 bg-new-gold" />
+          <Flower className="w-[64px] h-[102px] text-new-soft mx-auto mb-6" isStatic />
+
+          <div className="mb-4 flex items-center justify-center gap-3.5">
+            <span className="h-px w-7 shrink-0 bg-new-gold" />
+            <span className="font-sans text-[11px] uppercase tracking-[0.24em] text-new-muted">
+              A Place for Everyone
+            </span>
+            <span className="h-px w-7 shrink-0 bg-new-gold" />
+          </div>
           <h2 className="font-serif text-[clamp(28px,3vw,42px)] font-light leading-[1.15] text-new-ink">
-            Every loss deserves <em className="italic">to be held.</em>
+            Every loss deserves{" "}
+            <span className="bg-new-gold-lt/15 px-2.5 py-0.5 rounded-[3px] box-decoration-clone">
+              <em className="italic">to be held.</em>
+            </span>
           </h2>
           <p className="mx-auto mt-5 max-w-[46ch] text-[15px] font-light leading-[1.7] text-new-muted">
             No comparison. No hierarchy. Every kind of loss, every kind of
@@ -64,18 +88,34 @@ export default function Held() {
           </p>
         </div>
 
-        {/* gap-px hairline grid — calm, even at 1/2/3 columns */}
-        <div className="grid grid-cols-1 gap-px border-[0.5px] border-new-rule bg-new-rule sm:grid-cols-2 lg:grid-cols-3">
-          {groups.map((g) => (
-            <div key={g.title} className="bg-new-white px-8 py-9">
-              <h3 className="font-serif text-[20px] font-light text-new-ink">
-                {g.title}
-              </h3>
-              <p className="mt-2.5 text-[13px] font-light leading-[1.8] text-new-muted">
-                {g.body}
-              </p>
-            </div>
-          ))}
+        {/* Floating card grid with beautiful tactile lift, expanded gap & details */}
+        <div className="grid grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {groups.map((g) => {
+            return (
+              <div
+                key={g.title}
+                className="group relative flex flex-col justify-between overflow-hidden bg-new-white p-8 border border-new-rule/80 transition-all duration-500 ease-gentle  hover:border-new-gold/40 min-h-[190px] hover:cursor-pointer"
+              >
+                <div>
+                  {/* Title */}
+                  <h3 className="font-serif text-[20px] font-light text-new-ink transition-colors duration-300 group-hover:text-new-gold">
+                    {g.title}
+                  </h3>
+
+                  {/* Expanding gold accent line */}
+                  <span className="block mt-2.5 h-[0.5px] w-8 bg-new-gold/40 transition-all duration-500 group-hover:w-16 group-hover:bg-new-gold" />
+
+                  {/* Description */}
+                  <p className="mt-4 max-w-[28ch] text-[13px] font-light leading-[1.7] text-new-muted transition-colors duration-300 group-hover:text-new-ink">
+                    {g.body}
+                  </p>
+                </div>
+
+                {/* Subtly animated watermark leaf sprig */}
+                <Botanical className="pointer-events-none absolute -bottom-6 -right-4 w-[100px] rotate-[10deg] text-new-ink opacity-[0.015] transition-all duration-700 ease-out group-hover:rotate-[14deg] group-hover:opacity-[0.05]" />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

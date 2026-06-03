@@ -9,12 +9,12 @@ export default function NewImprovedAnnounce() {
 
   return (
     <div className="relative bg-new-ink">
-      <div className="mx-auto flex max-w-[1320px] items-center justify-center px-12 py-3">
-        <p className="text-center font-sans text-[11px] font-light uppercase tracking-[0.18em] text-new-gold-lt">
+      <div className="mx-auto flex max-w-[1320px] items-center justify-center px-6 md:px-12 py-3">
+        <p className="text-center font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-new-gold-lt">
           Introducing{" "}
           <Link
             href="/registry"
-            className="group inline-flex items-center gap-1 font-normal text-new-gold-lt focus-visible:[outline:2px_solid_var(--color-new-gold-lt)] focus-visible:outline-offset-2"
+            className="group inline-flex items-center gap-1 font-medium text-new-gold-lt focus-visible:[outline:2px_solid_var(--color-new-gold-lt)] focus-visible:outline-offset-2"
           >
             <span className="underline decoration-new-gold-lt/70 underline-offset-4 transition-colors duration-150 group-hover:decoration-new-gold-lt">
               mouurn Registry
@@ -23,7 +23,7 @@ export default function NewImprovedAnnounce() {
               →
             </span>
           </Link>
-          <span className="text-new-gold-lt/65">
+          <span className="text-new-gold-lt/85">
             {" "}
             - a new way to give and receive support in grief.
           </span>
