@@ -20,25 +20,7 @@ export default function Flower({ className = "", isStatic = false }: FlowerProps
           <stop offset="100%" stopColor="var(--color-new-gold)" stopOpacity="0" />
         </linearGradient>
       </defs>
-      <style>{`
-        @keyframes gentle-sway-held {
-          0%, 100% { transform: rotate(-2.5deg); }
-          50% { transform: rotate(2.5deg); }
-        }
-        @keyframes core-pulse {
-          0%, 100% { transform: scale(0.9); opacity: 0.75; }
-          50% { transform: scale(1.15); opacity: 1; }
-        }
-        .sway-held {
-          transform-origin: 50px 150px;
-          animation: gentle-sway-held 8s ease-in-out infinite;
-        }
-        .bloom-core {
-          transform-origin: 0px 0px;
-          animation: core-pulse 4s ease-in-out infinite;
-        }
-      `}</style>
-      <g className={isStatic ? "" : "sway-held"}>
+      <g>
         {/* Stem */}
         <path
           d="M50,150 Q44,95 50,48"
@@ -125,7 +107,7 @@ export default function Flower({ className = "", isStatic = false }: FlowerProps
           {/* Center detail */}
           <circle cx="0" cy="0" r="6.2" stroke="currentColor" strokeWidth="0.75" className="fill-new-white" />
           <circle cx="0" cy="0" r="3.4" stroke="currentColor" strokeWidth="0.55" className="fill-new-gold-lt/[0.2]" />
-          <circle cx="0" cy="0" r="1.4" className={`fill-new-gold stroke-none ${isStatic ? "" : "bloom-core"}`} />
+          <circle cx="0" cy="0" r="1.4" className="fill-new-gold stroke-none" />
         </g>
       </g>
       {/* Horizon line with fade-out gradient */}

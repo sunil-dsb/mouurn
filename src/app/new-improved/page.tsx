@@ -6,6 +6,7 @@ import Paths from "../../components/new-improved/Paths";
 import Mission from "../../components/new-improved/Mission";
 import Pillars from "../../components/new-improved/Pillars";
 import Held from "../../components/new-improved/Held";
+import NewImageBreak from "../../components/new-improved/NewImageBreak";
 import Newsletter from "../../components/new-improved/Newsletter";
 import SoftFade from "../../components/new-improved/SoftFade";
 
@@ -25,15 +26,18 @@ export default function NewImproved() {
   return (
     <NewImprovedChrome>
       <Hero />
-      <SoftFade>
-        <Story />
-      </SoftFade>
+      {/* Lead with the fork — orient the visitor before the story */}
       <SoftFade>
         <Paths />
       </SoftFade>
       <SoftFade>
+        <Story />
+      </SoftFade>
+      <SoftFade>
         <Mission />
       </SoftFade>
+      {/* A breath — full-bleed imagery between the emotional core and the offerings */}
+      <NewImageBreak line="You don't have to do this alone." />
       <SoftFade>
         <Pillars />
       </SoftFade>

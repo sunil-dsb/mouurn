@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const linkCls =
-  "block text-[14px] font-light leading-relaxed text-new-oat/70 no-underline transition-colors duration-150 hover:text-new-oat focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-new-gold";
+  "block text-[15px] font-light leading-relaxed text-new-oat/85 no-underline hover:text-new-oat focus-visible:[outline:2px_solid_var(--color-new-gold)] focus-visible:outline-offset-2";
 const labelCls =
-  "mb-5 text-[11px] uppercase tracking-[0.2em] text-new-oat/45";
+  "mb-5 text-[11px] uppercase tracking-[0.2em] text-new-gold-lt/85";
 
 const navigateLinks = [
   { label: "Registry", href: "/registry" },
@@ -28,19 +28,27 @@ const bottomLinks = [
 export default function NewImprovedFooter() {
   return (
     <footer className="border-t-[0.5px] border-new-footer-rule bg-new-ink pt-18 pb-10">
-      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-14 px-6 sm:grid-cols-2 md:px-12 lg:grid-cols-[2fr_1fr_1fr_1.2fr]">
-        <div>
+      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-12 px-6 sm:grid-cols-2 md:px-12 lg:grid-cols-[1.7fr_1fr_1fr] lg:gap-16">
+        {/* Brand */}
+        <div className="sm:col-span-2 lg:col-span-1">
           <Link
             href="/new-improved"
-            className="mb-4 block font-serif text-[22px] font-normal tracking-[0.3em] text-new-oat"
+            className="mb-5 block font-serif text-[24px] font-semibold tracking-[0.3em] text-new-oat"
           >
             mouurn
           </Link>
-          <p className="max-w-[300px] font-serif text-[16px] italic leading-relaxed text-new-oat/55">
+          <p className="mb-6 max-w-[320px] font-serif text-[17px] italic leading-relaxed text-new-oat/75">
             Restoring the rituals of comfort and community around loss.
           </p>
+          <a
+            href="https://instagram.com/mouurnwithme"
+            className="text-[13px] uppercase tracking-[0.16em] text-new-gold-lt no-underline hover:text-new-oat"
+          >
+            @mouurnwithme
+          </a>
         </div>
 
+        {/* Navigate */}
         <div>
           <div className={labelCls}>Navigate</div>
           <div className="flex flex-col gap-3">
@@ -52,6 +60,7 @@ export default function NewImprovedFooter() {
           </div>
         </div>
 
+        {/* This place */}
         <div>
           <div className={labelCls}>This place</div>
           <div className="flex flex-col gap-3">
@@ -62,23 +71,10 @@ export default function NewImprovedFooter() {
             ))}
           </div>
         </div>
-
-        <div>
-          <div className={labelCls}>mouurn with me</div>
-          <p className="mb-5 text-[13px] leading-relaxed text-new-oat/50 font-light">
-            On love, loss, and what comes after.
-          </p>
-          <Link
-            href="#newsletter"
-            className="inline-block border-b-[0.5px] border-new-gold pb-1 text-[11px] uppercase tracking-[0.18em] text-new-gold-lt transition-opacity hover:opacity-75"
-          >
-            Read the letter →
-          </Link>
-        </div>
       </div>
 
       <div className="mx-auto mt-14 flex max-w-[1320px] flex-col gap-4 border-t-[0.5px] border-new-footer-divider px-6 pt-7 sm:flex-row sm:items-center sm:justify-between md:px-12">
-        <span className="text-[11px] tracking-[0.06em] text-new-oat/40">
+        <span className="text-[11px] tracking-[0.06em] text-new-oat/60">
           &copy; 2026 mouurn &middot; Full Stop Productions LLC
         </span>
         <div className="flex flex-wrap gap-5">
@@ -86,7 +82,7 @@ export default function NewImprovedFooter() {
             <a
               key={l.label}
               href={l.href}
-              className="text-[11px] tracking-[0.06em] text-new-oat/40 no-underline transition-colors duration-150 hover:text-new-oat/70"
+              className="text-[11px] tracking-[0.06em] text-new-oat/60 no-underline hover:text-new-oat"
             >
               {l.label}
             </a>

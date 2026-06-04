@@ -54,13 +54,13 @@ const groups = [
 
 export default function Held() {
   return (
-    <section className="relative overflow-hidden border-b-[0.5px] border-new-rule bg-new-oat py-20 md:py-28">
+    <section className="relative overflow-hidden border-b-[0.5px] border-new-rule bg-new-oat pt-12 pb-20 md:pt-14 md:pb-28">
       {/* Tactile paper grain texture */}
       <div className="grain" aria-hidden="true" />
 
       {/* Gentle leaf sprigs in the empty margins (desktop only) */}
       <Botanical className="pointer-events-none absolute -bottom-16 -right-12 w-[180px] rotate-[15deg] text-new-ink opacity-[0.10] hidden lg:block" />
-      <Botanical className="pointer-events-none absolute -top-16 -left-12 w-[180px] -rotate-[15deg] text-new-ink opacity-[0.10] hidden lg:block" />
+      <Botanical className="pointer-events-none absolute -bottom-16 -left-12 w-[180px] -rotate-[15deg] text-new-ink opacity-[0.10] hidden lg:block" />
 
       {/* Aligned container width with Paths.tsx */}
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 md:px-12">
@@ -88,34 +88,19 @@ export default function Held() {
           </p>
         </div>
 
-        {/* Floating card grid with beautiful tactile lift, expanded gap & details */}
-        <div className="grid grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {groups.map((g) => {
-            return (
-              <div
-                key={g.title}
-                className="group relative flex flex-col justify-between overflow-hidden bg-new-white p-8 border border-new-rule/80 transition-all duration-500 ease-gentle  hover:border-new-gold/40 min-h-[190px] hover:cursor-pointer"
-              >
-                <div>
-                  {/* Title */}
-                  <h3 className="font-serif text-[20px] font-light text-new-ink transition-colors duration-300 group-hover:text-new-gold">
-                    {g.title}
-                  </h3>
-
-                  {/* Expanding gold accent line */}
-                  <span className="block mt-2.5 h-[0.5px] w-8 bg-new-gold/40 transition-all duration-500 group-hover:w-16 group-hover:bg-new-gold" />
-
-                  {/* Description */}
-                  <p className="mt-4 max-w-[28ch] text-[13px] font-light leading-[1.7] text-new-muted transition-colors duration-300 group-hover:text-new-ink">
-                    {g.body}
-                  </p>
-                </div>
-
-                {/* Subtly animated watermark leaf sprig */}
-                <Botanical className="pointer-events-none absolute -bottom-6 -right-4 w-[100px] rotate-[10deg] text-new-ink opacity-[0.015] transition-all duration-700 ease-out group-hover:rotate-[14deg] group-hover:opacity-[0.05]" />
-              </div>
-            );
-          })}
+        {/* One white surface, divided by hairlines (not gaps) — a quiet
+            directory of who belongs here. */}
+        <div className="grid grid-cols-1 gap-px overflow-hidden border-[0.5px] border-new-rule bg-new-rule sm:grid-cols-2 lg:grid-cols-3">
+          {groups.map((g) => (
+            <div key={g.title} className="bg-new-white px-8 py-9 md:px-9">
+              <h3 className="font-serif text-[20px] font-light leading-[1.2] text-new-ink">
+                {g.title}
+              </h3>
+              <p className="mt-3 text-[14px] font-normal leading-[1.7] text-new-ink/75">
+                {g.body}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Botanical from "./Botanical";
 
 type Pillar = { title: React.ReactNode; description: string; icon: React.ReactNode; href: string; cta: string };
 
@@ -77,9 +78,10 @@ const pillars: Pillar[] = [
 
 export default function Pillars() {
   return (
-    <section className="border-b-[0.5px] border-new-rule bg-new-cream py-14 md:py-20">
-      <div className="mx-auto max-w-[1320px] px-6 md:px-12">
+    <section className="relative overflow-hidden border-b-[0.5px] border-new-rule bg-new-oat py-14 md:py-20">
+      <div className="grain" aria-hidden="true" />
 
+      <div className="relative z-10 mx-auto max-w-[1320px] px-6 md:px-12">
         <div className="mb-12 text-center">
           <div className="mb-4 flex items-center justify-center gap-3.5">
             <span className="h-px w-7 shrink-0 bg-new-gold" />
@@ -89,46 +91,39 @@ export default function Pillars() {
             <span className="h-px w-7 shrink-0 bg-new-gold" />
           </div>
           <h2 className="font-serif text-[clamp(28px,3vw,42px)] font-light leading-[1.18] text-new-ink">
-            Everything built around{" "}
-            <em className="italic">showing up.</em>
+            Everything built around <em className="italic">showing up.</em>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-px bg-new-rule sm:grid-cols-2 lg:grid-cols-5">
+        <div className="flex flex-wrap justify-center gap-6">
           {pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="group relative flex h-full flex-col overflow-hidden bg-new-white px-8 py-11 transition-colors duration-200 hover:bg-new-cream hover:cursor-pointer"
+              className="relative flex w-full flex-col justify-between overflow-hidden border border-new-rule/80 bg-new-white p-9 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
-              <div className="relative z-10 flex h-full flex-col">
-                {/* Icon */}
-                <div className="mb-5 h-9 w-9 text-new-ink">{pillar.icon}</div>
-
-                {/* Title */}
-                <h3 className="mb-3 font-serif text-[clamp(18px,1.5vw,22px)] font-light leading-[1.2] text-new-ink">
+              <div className="relative z-10">
+                <div className="mb-5 h-9 w-9 text-new-gold">{pillar.icon}</div>
+                <h3 className="font-serif text-[21px] font-light leading-[1.2] text-new-ink">
                   {pillar.title}
                 </h3>
-
-                {/* Description */}
-                <p className="mb-8 flex-1 text-[13px] font-light leading-[1.85] text-new-muted">
+                <span className="mt-3 block h-[0.5px] w-10 bg-new-gold/50" />
+                <p className="mt-4 text-[15px] font-normal leading-[1.7] text-new-muted">
                   {pillar.description}
                 </p>
-
-                {/* CTA */}
-                <Link
-                  href={pillar.href}
-                  className="mt-auto inline-flex items-center gap-2.5 self-start border-b-[0.5px] border-new-gold pb-1 font-sans text-[11px] uppercase tracking-cta text-new-ink focus-visible:[outline:2px_solid_var(--color-new-gold)] focus-visible:outline-offset-4"
-                >
-                  {pillar.cta}
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
               </div>
+
+              <Link
+                href={pillar.href}
+                className="relative z-10 mt-7 inline-flex items-center gap-2 self-start font-sans text-[11px] uppercase tracking-[0.12em] text-new-ink focus-visible:[outline:2px_solid_var(--color-new-gold)] focus-visible:outline-offset-4"
+              >
+                {pillar.cta}
+                <span>→</span>
+              </Link>
+
+              <Botanical className="pointer-events-none absolute -bottom-6 -right-4 w-[100px] rotate-[10deg] text-new-ink opacity-[0.04]" />
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

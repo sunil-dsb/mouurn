@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 const leftLinks = [
@@ -18,29 +18,13 @@ const allLinks = [...leftLinks, ...rightLinks];
 const focusRing =
   "focus-visible:[outline:2px_solid_var(--color-new-gold)] focus-visible:outline-offset-4";
 
-// Center-out gold underline that grows to both edges on hover.
-const link = `relative font-sans text-[11px] uppercase tracking-[0.14em] text-black font-normal transition-colors duration-150 hover:text-black/80 after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-center after:scale-x-0 after:bg-new-gold after:transition-transform after:duration-200 after:content-[''] hover:after:scale-x-100 ${focusRing}`;
+const link = `font-sans text-[12px] uppercase tracking-[0.14em] text-black font-normal underline-offset-[6px] decoration-[0.5px] decoration-new-gold hover:underline ${focusRing}`;
 
 export default function NewImprovedNavBar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Nav gains a soft elevation once the hero scrolls past — a quiet premium cue.
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b-[0.5px] backdrop-blur-md transition-shadow duration-300 ${
-        scrolled
-          ? "border-new-rule-md bg-[rgba(251,249,245,0.96)] shadow-[0_6px_24px_rgba(42,38,34,0.06)]"
-          : "border-new-rule bg-[rgba(251,249,245,0.88)]"
-      }`}
-    >
+    <header className="sticky top-0 z-50 border-b-[0.5px] border-new-rule-md bg-[rgba(251,249,245,0.96)] backdrop-blur-md">
       <nav className="mx-auto grid h-18 max-w-[1320px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 md:px-12">
         {/* Left — links (desktop) / hamburger (mobile) */}
         <div className="flex items-center gap-8">
@@ -67,7 +51,7 @@ export default function NewImprovedNavBar() {
         {/* Center — wordmark */}
         <Link
           href="/new-improved"
-          className="font-serif text-[26px] font-normal tracking-logo text-black"
+          className="font-serif text-[26px] font-semibold tracking-logo text-black"
         >
           mouurn
         </Link>
@@ -81,7 +65,7 @@ export default function NewImprovedNavBar() {
           ))}
           <Link
             href="/registry"
-            className="bg-new-ink px-5 py-2.5 font-sans text-[11px] uppercase tracking-[0.18em] text-new-cream transition-opacity duration-150 hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-new-gold"
+            className="bg-new-ink px-5 py-2.5 font-sans text-[11px] uppercase tracking-[0.18em] text-new-cream focus-visible:[outline:2px_solid_var(--color-new-gold)] focus-visible:outline-offset-2"
           >
             Start here
           </Link>
@@ -89,14 +73,9 @@ export default function NewImprovedNavBar() {
         <div className="md:hidden" />
       </nav>
 
-      {/* Mobile menu — grid-rows 0fr→1fr animates to true height */}
-      <div
-        className={`grid overflow-hidden border-t-[0.5px] border-new-rule transition-[grid-template-rows,opacity] duration-300 ease-out md:hidden ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
-        inert={!open}
-      >
-        <div className="overflow-hidden">
+      {/* Mobile menu — shown/hidden instantly */}
+      {open && (
+        <div className="border-t-[0.5px] border-new-rule md:hidden">
           <div className="flex flex-col px-6 py-2">
             {allLinks.map((l, i) => (
               <Link
@@ -119,7 +98,7 @@ export default function NewImprovedNavBar() {
             </Link>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

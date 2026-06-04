@@ -10,22 +10,20 @@ export default function NewImprovedAnnounce() {
   return (
     <div className="relative bg-new-ink">
       <div className="mx-auto flex max-w-[1320px] items-center justify-center px-6 md:px-12 py-3">
-        <p className="text-center font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-new-gold-lt">
+        <p className="text-center font-sans text-[12px] font-light uppercase tracking-[0.15em] text-new-gold-lt">
           Introducing{" "}
           <Link
             href="/registry"
-            className="group inline-flex items-center gap-1 font-medium text-new-gold-lt focus-visible:[outline:2px_solid_var(--color-new-gold-lt)] focus-visible:outline-offset-2"
+            className="group inline-flex items-baseline gap-1.5 align-baseline text-new-gold-lt focus-visible:[outline:2px_solid_var(--color-new-gold-lt)] focus-visible:outline-offset-2"
           >
-            <span className="underline decoration-new-gold-lt/70 underline-offset-4 transition-colors duration-150 group-hover:decoration-new-gold-lt">
+            <span className="font-serif text-[16px] font-normal italic normal-case tracking-normal underline decoration-new-gold-lt/60 underline-offset-[3px]">
               mouurn Registry
             </span>
-            <span className="transition-transform duration-200 group-hover:translate-x-0.5">
-              →
-            </span>
+            <span className="text-[10px]">→</span>
           </Link>
-          <span className="text-new-gold-lt/85">
+          <span>
             {" "}
-            - a new way to give and receive support in grief.
+            a new way to give and receive support in grief.
           </span>
         </p>
       </div>
@@ -34,7 +32,7 @@ export default function NewImprovedAnnounce() {
         type="button"
         onClick={() => setHidden(true)}
         aria-label="Dismiss announcement"
-        className="absolute right-2 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center text-new-gold-lt/55 transition-colors duration-150 hover:text-new-gold-lt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-new-gold-lt"
+        className="absolute right-2 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center text-new-gold-lt/65 focus-visible:[outline:2px_solid_var(--color-new-gold-lt)] focus-visible:outline-offset-2"
       >
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M6 6l12 12M6 18L18 6" />

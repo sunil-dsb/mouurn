@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const field =
-  "w-full border-0 border-b-[0.5px] border-new-oat/20 bg-transparent py-3.5 font-sans text-[14px] font-light text-new-oat outline-none transition-colors placeholder:text-new-oat/35 focus:border-new-gold-lt";
+  "w-full border-0 border-b-[0.5px] border-new-oat/25 bg-transparent py-3.5 font-sans text-[15px] font-light text-new-oat outline-none placeholder:text-new-oat/50 focus:border-new-gold-lt";
 
 export default function Newsletter() {
   const [name, setName] = useState("");
@@ -30,7 +30,7 @@ export default function Newsletter() {
             <br />
             hardest <em className="italic text-new-gold-lt">days.</em>
           </h2>
-          <p className="max-w-[46ch] text-[15px] font-light leading-[1.7] text-new-oat/65">
+          <p className="max-w-[46ch] text-[16px] font-light leading-[1.7] text-new-oat/75">
             A letter on grief, ritual, and how to show up - whether you&apos;re
             in the thick of it, or standing beside someone who is.
           </p>
@@ -68,11 +68,11 @@ export default function Newsletter() {
             />
             <button
               type="submit"
-              className="inline-flex items-center gap-2.5 self-start bg-new-gold-lt px-8 py-4 font-sans text-[11px] uppercase tracking-[0.18em] text-new-ink transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-new-gold-lt"
+              className="inline-flex items-center gap-2.5 self-start bg-new-gold-lt px-8 py-4 font-sans text-[11px] uppercase tracking-[0.18em] text-new-ink focus-visible:[outline:2px_solid_var(--color-new-gold-lt)] focus-visible:outline-offset-2"
             >
               Send me the letter →
             </button>
-            <p className="mt-4 font-sans text-[12px] italic text-new-oat/40">
+            <p className="mt-4 font-sans text-[13px] italic text-new-oat/55">
               No noise. One letter, once a month. Unsubscribe any time.
             </p>
           </form>
