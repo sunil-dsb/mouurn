@@ -148,7 +148,7 @@
   --color-new-ink: #2A2622;
   --color-new-oat: #F5F2EC;
   --color-new-oat-mid: #EDE9E1;
-  --color-new-muted: #7A7672;
+  --color-new-muted: #6B6660; /* bible v2 spec — darker, passes AA */
   --color-new-soft: #B8B4AC;
   --color-new-rule: rgba(42, 38, 34, 0.08);
   --color-new-rule-md: rgba(42, 38, 34, 0.14);

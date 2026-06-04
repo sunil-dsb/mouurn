@@ -13,6 +13,7 @@ export default function HeaderManager() {
   if (
     pathname === "/" ||
     pathname === "/improved" ||
+    pathname === "/new-improved" ||
     pathname === "/style-guide"
   ) {
     return null;
