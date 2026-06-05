@@ -110,10 +110,12 @@ const eyebrow: CSSProperties = {
   color: palette.soft,
 };
 
+// Fluid heading: scales from ~60% of `size` on small screens up to `size` on
+// desktop, so every heading is mobile-responsive without per-heading overrides.
 const h = (size: number, lh = 1.06): CSSProperties => ({
   fontFamily: DISPLAY,
   fontWeight: 300,
-  fontSize: size,
+  fontSize: `clamp(${Math.round(size * 0.6)}px, ${(size * 0.0449).toFixed(2)}vw + ${Math.round(size * 0.425)}px, ${size}px)`,
   lineHeight: lh,
   color: palette.ink,
   margin: 0,
@@ -159,11 +161,61 @@ export default function Lab() {
         .lab-card:hover { transform: translateY(-3px); }
         .lab-foot-link { color: rgba(244,240,231,0.7); transition: color 0.18s ease; cursor: pointer; }
         .lab-foot-link:hover { color: #F4F0E7; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 900px) {
+          .lab-2col { grid-template-columns: 1fr !important; gap: 28px !important; }
+        }
+        @media (max-width: 768px) {
+          .lab-px { padding-left: 22px !important; padding-right: 22px !important; }
+          .lab-section { padding-left: 22px !important; padding-right: 22px !important; padding-top: 64px !important; padding-bottom: 64px !important; }
+
+          /* announcement bar */
+          .lab-anc { height: auto !important; padding: 9px 18px !important; }
+          .lab-anc p { font-size: 10.5px !important; line-height: 1.55 !important; }
+
+          /* nav → stacked */
+          .lab-nav { display: flex !important; flex-direction: column !important; height: auto !important; gap: 12px !important; padding: 14px 22px !important; }
+          .lab-nav-logo { order: -1; font-size: 22px !important; }
+          .lab-nav-side { justify-content: center !important; flex-wrap: wrap !important; gap: 14px 18px !important; }
+
+          /* hero */
+          .lab-hero { height: 520px !important; }
+          .lab-hero-inner { padding: 0 22px 44px !important; }
+
+          /* fork → stacked cards */
+          .lab-fork-grid { grid-template-columns: 1fr !important; }
+          .lab-fork-card { padding: 44px 28px !important; border-right: none !important; }
+          .lab-fork-card:not(:last-child) { border-bottom: 0.5px solid rgba(42,36,32,0.12) !important; }
+          .lab-fork-card svg { top: 40px !important; right: 28px !important; }
+
+          /* offerings rows → icon+name, desc below */
+          .lab-row { grid-template-columns: 32px 1fr !important; column-gap: 16px !important; row-gap: 6px !important; padding: 26px 4px !important; }
+          .lab-row > p { grid-column: 1 / -1 !important; }
+          .lab-row > .lab-arrow { display: none !important; }
+
+          /* every loss → single column */
+          .lab-loss-grid { grid-template-columns: 1fr !important; }
+
+          /* newsletter → stacked */
+          .lab-news-grid { grid-template-columns: 1fr !important; }
+          .lab-news-img { min-height: 220px !important; }
+          .lab-news-content { padding: 40px 26px !important; }
+
+          /* footer */
+          .lab-foot-inner { padding: 56px 22px 20px !important; }
+          .lab-foot-cols { grid-template-columns: 1fr 1fr !important; gap: 30px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          .lab-news-form { flex-direction: column !important; align-items: stretch !important; gap: 14px !important; }
+          .lab-foot-cols { grid-template-columns: 1fr !important; }
+        }
       `}</style>
       <main style={{ background: palette.bg, color: palette.text, fontFamily: BODY, fontWeight: 300 }}>
         {/* ANNOUNCEMENT BAR */}
         <div style={{ background: palette.dark, color: "#F4F0E7" }}>
           <div
+            className="lab-anc"
             style={{
               display: "flex",
               alignItems: "center",
@@ -190,6 +242,7 @@ export default function Lab() {
 
         {/* NAV */}
         <nav
+          className="lab-nav"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr auto 1fr",
@@ -199,16 +252,16 @@ export default function Lab() {
             borderBottom: `0.5px solid ${palette.rule}`,
           }}
         >
-          <div style={{ display: "flex", gap: 30, fontFamily: BODY, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: palette.ink }}>
+          <div className="lab-nav-side" style={{ display: "flex", gap: 30, fontFamily: BODY, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: palette.ink }}>
             <span className="lab-nav-link">Registry</span>
             <span className="lab-nav-link">Shop</span>
             <span className="lab-nav-link">Plan</span>
             <span className="lab-nav-link">Read</span>
           </div>
-          <div style={{ fontFamily: DISPLAY, fontSize: 27, letterSpacing: "0.34em", color: palette.ink, textAlign: "center" }}>
+          <div className="lab-nav-logo" style={{ fontFamily: DISPLAY, fontSize: 27, letterSpacing: "0.34em", color: palette.ink, textAlign: "center" }}>
             mouurn
           </div>
-          <div style={{ display: "flex", gap: 30, justifyContent: "flex-end", fontFamily: BODY, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: palette.ink }}>
+          <div className="lab-nav-side" style={{ display: "flex", gap: 30, justifyContent: "flex-end", fontFamily: BODY, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: palette.ink }}>
             <span className="lab-nav-link">Gather</span>
             <span className="lab-nav-link">About</span>
             <span style={{ color: palette.ink, fontWeight: 500, borderBottom: `0.5px solid ${palette.accent}`, paddingBottom: 2 }}>Start here</span>
@@ -216,11 +269,11 @@ export default function Lab() {
         </nav>
 
         {/* HERO */}
-        <section style={{ position: "relative", height: 600, overflow: "hidden", background: palette.dark }}>
+        <section className="lab-hero" style={{ position: "relative", height: 600, overflow: "hidden", background: palette.dark }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/bg-8.png" alt="A wrapped bouquet resting on the handle of a black door" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(34,28,23,0.74), rgba(34,28,23,0.12) 52%, transparent)" }} />
-          <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 64px 64px" }}>
+          <div className="lab-hero-inner" style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 64px 64px" }}>
             <p style={{ ...eyebrow, color: "rgba(244,240,231,0.82)", marginBottom: 20 }}>For every kind of loss</p>
             <h1 style={{ ...h(62, 1.04), color: "#F4F0E7", maxWidth: 640 }}>
               When someone you love <em style={{ fontStyle: "italic" }}>is grieving.</em>
@@ -235,7 +288,7 @@ export default function Lab() {
         </section>
 
         {/* STORY */}
-        <section style={{ padding: "100px 64px", borderBottom: `0.5px solid ${palette.rule}`, display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: 80, alignItems: "start", maxWidth: 1280, margin: "0 auto" }}>
+        <section className="lab-section lab-2col" style={{ padding: "100px 64px", borderBottom: `0.5px solid ${palette.rule}`, display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: 80, alignItems: "start", maxWidth: 1280, margin: "0 auto" }}>
           <div>
             <p style={{ ...eyebrow, marginBottom: 22 }}>Why mouurn exists</p>
             <h2 style={h(46, 1.1)}>
@@ -259,14 +312,14 @@ export default function Lab() {
         </section>
 
         {/* FORK */}
-        <section style={{ padding: "100px 64px", borderBottom: `0.5px solid ${palette.rule}` }}>
+        <section className="lab-section" style={{ padding: "100px 64px", borderBottom: `0.5px solid ${palette.rule}` }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <p style={{ ...eyebrow, marginBottom: 16 }}>Where to begin</p>
             <h2 style={h(36, 1.15)}>
               Wherever you&apos;re standing, <em style={{ fontStyle: "italic" }}>there&apos;s a way in.</em>
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", maxWidth: 1080, margin: "0 auto", border: `0.5px solid ${palette.rule}` }}>
+          <div className="lab-fork-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", maxWidth: 1080, margin: "0 auto", border: `0.5px solid ${palette.rule}` }}>
             {[
               {
                 tag: "For you",
@@ -294,7 +347,7 @@ export default function Lab() {
                 ),
               },
             ].map((c, i) => (
-              <div key={c.b} style={{ background: palette.surface, padding: "60px 52px", position: "relative", borderRight: i === 0 ? `0.5px solid ${palette.rule}` : "none" }}>
+              <div key={c.b} className="lab-fork-card" style={{ background: palette.surface, padding: "60px 52px", position: "relative", borderRight: i === 0 ? `0.5px solid ${palette.rule}` : "none" }}>
                 <svg
                   width="34"
                   height="34"
@@ -339,7 +392,7 @@ export default function Lab() {
         </section>
 
         {/* BRIDGE — pull quote over a faint warm image */}
-        <section style={{ position: "relative", overflow: "hidden", padding: "100px 64px", textAlign: "center", borderBlock: `0.5px solid ${palette.rule}`, background: palette.surface }}>
+        <section className="lab-section" style={{ position: "relative", overflow: "hidden", padding: "100px 64px", textAlign: "center", borderBlock: `0.5px solid ${palette.rule}`, background: palette.surface }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/bg-4.png"
@@ -369,7 +422,7 @@ export default function Lab() {
         </section>
 
         {/* OFFERINGS — editorial 5-row list */}
-        <section style={{ padding: "100px 64px", borderBottom: `0.5px solid ${palette.rule}` }}>
+        <section className="lab-section" style={{ padding: "100px 64px", borderBottom: `0.5px solid ${palette.rule}` }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <p style={{ ...eyebrow, marginBottom: 16 }}>What mouurn offers</p>
             <h2 style={h(36, 1.15)}>
@@ -415,7 +468,7 @@ export default function Lab() {
         </section>
 
         {/* EVERY LOSS — editorial grid, no pills */}
-        <section style={{ padding: "100px 64px", background: palette.dark, color: "rgba(244,240,231,0.62)" }}>
+        <section className="lab-section" style={{ padding: "100px 64px", background: palette.dark, color: "rgba(244,240,231,0.62)" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <p style={{ ...eyebrow, color: palette.accent, marginBottom: 18 }}>Who mouurn is for</p>
             <h2 style={{ ...h(48, 1.1), color: "#F4F0E7", maxWidth: 720, margin: "0 auto 18px" }}>
@@ -425,7 +478,7 @@ export default function Lab() {
               No comparison. No hierarchy. Every kind of loss, every kind of griever.
             </p>
           </div>
-          <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 5 }}>
+          <div className="lab-loss-grid" style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 5 }}>
             {CATEGORIES.map(([name, desc]) => (
               <div
                 key={name}
@@ -444,8 +497,9 @@ export default function Lab() {
         </section>
 
         {/* NEWSLETTER — full-width split card with imagery */}
-        <section style={{ padding: "100px 64px", background: palette.bg }}>
+        <section className="lab-section" style={{ padding: "100px 64px", background: palette.bg }}>
           <div
+            className="lab-news-grid"
             style={{
               maxWidth: 1180,
               margin: "0 auto",
@@ -457,7 +511,7 @@ export default function Lab() {
             }}
           >
             {/* Image side */}
-            <div style={{ position: "relative", minHeight: 360 }}>
+            <div className="lab-news-img" style={{ position: "relative", minHeight: 360 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/registry_hero.jpg"
@@ -467,7 +521,7 @@ export default function Lab() {
             </div>
 
             {/* Content side */}
-            <div style={{ padding: "56px 72px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div className="lab-news-content" style={{ padding: "56px 72px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <p style={{ ...eyebrow, marginBottom: 18 }}>mouurn with me</p>
               <h2 style={{ ...h(42, 1.1), marginBottom: 20 }}>
                 Words for the <em style={{ fontStyle: "italic" }}>hardest days.</em>
@@ -476,7 +530,7 @@ export default function Lab() {
                 A letter on grief, ritual, and how to show up — for the ones in the thick of it, and the ones standing beside them.
               </p>
 
-              <div style={{ display: "flex", alignItems: "stretch", gap: 12, maxWidth: 460 }}>
+              <div className="lab-news-form" style={{ display: "flex", alignItems: "stretch", gap: 12, maxWidth: 460 }}>
                 <input
                   type="email"
                   placeholder="Your email"
@@ -523,8 +577,8 @@ export default function Lab() {
         {/* FOOTER — big wordmark base */}
         <footer style={{ background: palette.dark, color: "rgba(244,240,231,0.7)", fontFamily: BODY, overflow: "hidden" }}>
           {/* Link columns */}
-          <div style={{ maxWidth: 1320, margin: "0 auto", padding: "64px 64px 24px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
+          <div className="lab-foot-inner" style={{ maxWidth: 1320, margin: "0 auto", padding: "64px 64px 24px" }}>
+            <div className="lab-foot-cols" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
               {[
                 { head: "Navigate", items: ["Registry", "Shop", "Plan", "Read", "Gather", "About"] },
                 { head: "mouurn", items: ["Our story", "Our team", "Press", "Get in touch"] },
@@ -546,7 +600,7 @@ export default function Lab() {
           </div>
 
           {/* Giant wordmark — graphic close */}
-          <div style={{ maxWidth: 1320, margin: "0 auto", textAlign: "right", padding: "0 64px", lineHeight: 0.74 }}>
+          <div className="lab-px" style={{ maxWidth: 1320, margin: "0 auto", textAlign: "right", padding: "0 64px", lineHeight: 0.74 }}>
             <span
               aria-hidden
               style={{
@@ -563,7 +617,7 @@ export default function Lab() {
           </div>
 
           {/* Legal bar */}
-          <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 64px" }}>
+          <div className="lab-px" style={{ maxWidth: 1320, margin: "0 auto", padding: "0 64px" }}>
             <div
               style={{
                 borderTop: "0.5px solid rgba(244,240,231,0.12)",
