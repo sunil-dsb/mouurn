@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="relative flex h-[88vh] min-h-150 items-end overflow-hidden bg-new-ink">
       <Image
-        src="/bg.webp"
+        src="/bg-6.png"
         alt="A wrapped bouquet resting on the handle of a black door"
         fill
         priority
@@ -21,6 +21,9 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-[1320px] px-6 pb-[15vh] md:px-12 md:pb-[16vh]">
         <div className="max-w-[90%] md:max-w-[68%]">
+          <p className="mb-5 font-sans text-[11px] font-normal uppercase tracking-eyebrow text-new-cream/80 [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
+            For every kind of loss
+          </p>
           <h1 className="mb-3 font-serif text-[clamp(40px,5.2vw,80px)] font-light leading-[1.06] text-new-cream [text-shadow:0_2px_30px_rgba(0,0,0,0.45)]">
             When someone you love
             <br />

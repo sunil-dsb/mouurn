@@ -14,7 +14,7 @@ export default function Story() {
 
         {/* Two equal columns, top-aligned: heading | narrative */}
         <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
-          <h2 className="font-serif text-[clamp(34px,4.2vw,56px)] font-light leading-[1.07] text-new-ink">
+          <h2 className="font-serif text-[clamp(34px,4.2vw,56px)] font-normal leading-[1.07] text-new-ink">
             Grief lasts longer than our{" "}
             <em className="italic text-new-gold">rituals.</em>
           </h2>
