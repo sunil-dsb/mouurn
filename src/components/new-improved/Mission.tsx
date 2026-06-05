@@ -12,9 +12,11 @@ export default function Mission() {
             <span className="h-px w-7 shrink-0 bg-new-gold" />
             Our mission
           </div>
-          <h2 className="font-serif text-[clamp(30px,3.6vw,46px)] font-light leading-[1.12] text-new-ink">
+          <h2 className="font-serif text-[clamp(30px,3.6vw,46px)] font-normal leading-[1.12] text-new-ink">
             People want to help.{" "}
-            <em className="italic">They just don&apos;t know how.</em>
+            <span className="bg-new-gold-lt/15 px-2.5 py-0.5 rounded-[3px] box-decoration-clone">
+              <em className="italic">They just don&apos;t know how.</em>
+            </span>
           </h2>
         </div>
 

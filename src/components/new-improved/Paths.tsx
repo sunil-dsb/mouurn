@@ -45,12 +45,12 @@ export default function Paths() {
             Where to begin
             <span className="h-px w-7 shrink-0 bg-new-gold" />
           </div>
-          <h2 className="font-serif text-[clamp(26px,2.6vw,36px)] font-light leading-[1.15] text-new-ink">
+          <h2 className="font-serif text-[clamp(26px,2.6vw,36px)] font-normal leading-[1.15] text-new-ink">
             Wherever you&apos;re standing,{" "}
             <em className="italic text-new-gold">there&apos;s a way in.</em>
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-3">
           {paths.map((path) => (
             <Link
               key={path.key}
@@ -67,7 +67,7 @@ export default function Paths() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="1"
+                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"

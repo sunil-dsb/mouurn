@@ -12,7 +12,8 @@ export default function FooterManager() {
     pathname === "/" ||
     pathname === "/improved" ||
     pathname === "/new-improved" ||
-    pathname === "/style-guide"
+    pathname === "/style-guide" ||
+    pathname === "/lab"
   ) {
     return null;
   }

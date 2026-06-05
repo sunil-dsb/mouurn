@@ -11,7 +11,7 @@ const pillars: Pillar[] = [
     cta: "Start a registry",
     href: "/registry",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="3" y="3" width="18" height="18" rx="2" />
         <path d="M3 9h18M9 21V9" />
       </svg>
@@ -24,7 +24,7 @@ const pillars: Pillar[] = [
     cta: "Start gathering",
     href: "/gather",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -39,7 +39,7 @@ const pillars: Pillar[] = [
     cta: "Make a plan",
     href: "/plan",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="12" cy="12" r="10" />
         <path d="M12 8v4l3 3" />
       </svg>
@@ -55,7 +55,7 @@ const pillars: Pillar[] = [
     cta: "Read the essays",
     href: "/read",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
       </svg>
@@ -68,7 +68,7 @@ const pillars: Pillar[] = [
     cta: "Browse gifts",
     href: "/shop",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </svg>
@@ -90,16 +90,16 @@ export default function Pillars() {
             </span>
             <span className="h-px w-7 shrink-0 bg-new-gold" />
           </div>
-          <h2 className="font-serif text-[clamp(28px,3vw,42px)] font-light leading-[1.18] text-new-ink">
+          <h2 className="font-serif text-[clamp(28px,3vw,42px)] font-normal leading-[1.18] text-new-ink">
             Everything built around <em className="italic">showing up.</em>
           </h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-3">
           {pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="relative flex w-full flex-col justify-between overflow-hidden border border-new-rule/80 bg-new-white p-9 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+              className="relative flex w-full flex-col justify-between overflow-hidden border border-new-rule/80 bg-new-white p-9 sm:w-[calc(50%-6px)] lg:w-[calc(33.333%-8px)]"
             >
               <div className="relative z-10">
                 <div className="mb-5 h-9 w-9 text-new-gold">{pillar.icon}</div>

@@ -76,7 +76,7 @@ export default function Held() {
             </span>
             <span className="h-px w-7 shrink-0 bg-new-gold" />
           </div>
-          <h2 className="font-serif text-[clamp(28px,3vw,42px)] font-light leading-[1.15] text-new-ink">
+          <h2 className="font-serif text-[clamp(28px,3vw,42px)] font-normal leading-[1.15] text-new-ink">
             Every loss deserves{" "}
             <span className="bg-new-gold-lt/15 px-2.5 py-0.5 rounded-[3px] box-decoration-clone">
               <em className="italic">to be held.</em>

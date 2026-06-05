@@ -7,7 +7,6 @@ import Mission from "../../components/new-improved/Mission";
 import Pillars from "../../components/new-improved/Pillars";
 import Held from "../../components/new-improved/Held";
 import NewImageBreak from "../../components/new-improved/NewImageBreak";
-import Newsletter from "../../components/new-improved/Newsletter";
 import SoftFade from "../../components/new-improved/SoftFade";
 
 export const metadata: Metadata = {
@@ -44,7 +43,6 @@ export default function NewImproved() {
       <SoftFade>
         <Held />
       </SoftFade>
-      <Newsletter />
     </NewImprovedChrome>
   );
 }
